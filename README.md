@@ -3,5 +3,3 @@
 nhan-test
 
 anhthu testing
-  testing out pull request on github
-
