@@ -189,3 +189,11 @@
 - **Glossary:**
   - Purchased Item = A product that was purchased by the user.
   - User = Customer who wants to buy one or more items.
+
+## Other
+
+### Meeting Schedule
+We have scheduled weekly meetings for Friday at 1pm.
+
+### Team Lead
+We have selected Aaron as the team lead.
