@@ -2,7 +2,7 @@
 
 ### 2022-04-08 at 1:00pm till 3:10pm
 - Attended: Aaron, Ahn, Nhan, Haomiao
-- Meeting Location: Online
+- Meeting Location: Discord
 - Scheduled: Yes
 - Minutes:
   1. Added names to README.md using branches and pull requests.
@@ -17,11 +17,10 @@
 - Minutes:
   1. Worked on proposal usecases.
 
-### 2022-04-15 at 1:00pm till X
-- Attended: 
-- Meeting Location: 
-- Scheduled: 
+### 2022-04-15 at 1:00pm till 1:35pm
+- Attended: Aaron, Ahn, Nhan
+- Meeting Location: Discord
+- Scheduled: Yes
 - Minutes:
-  1. 
-  2. 
-  3. 
+  1. Assigned functional requirements to team members.
+  2. Discussed final steps needed for submission.
