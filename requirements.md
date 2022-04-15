@@ -1,59 +1,191 @@
-## <remove all of the example text and notes in < > such as this one>
-
 ## Functional Requirements
 
-1. requirement
-2. requirement
-3. requirement
-4. requirement
-5. requirement
-6. requirement
-7. requirement
-8. requirement
-9. requirement
-10. requirement
-11. requirement
-12. requirement
+### High Priority
+1. Add User Database - Anh
+2. Login - Nhan
+3. Logout - Nhan
+4. Create New Account - Aaron
+5. Delete Account - Haomiao
+6. Add Item Database - Anh
+7. Seller Create Item - Nhan
+8. Seller Delete Item - Nhan
+9. View Available Items - Aaron
+10. View Single Item - Aaron
+11. Add Cart Database - Anh
+12. Add Item to Cart - Anh
+13. Remove Item From Cart - Haomiao
+14. Buy Items From Cart - Haomiao
+15. Maintain UI Consistency - Nhan
+
+### Medium Priority
+16. (HP) Add Item Categories
+17. Purchase History Database
+18. View Purchase History
+19. Picture Database
+20. (HP) Add Pictures To Items
+
+### Low Priority
+- Add Discount Codes
+- Seller Item List Page
+- Seller Update Item
+- Item Search Functionality
+- Sort Items
+- Seller and Item Reviews
+- Cancel Ordered Item
+- "Feeling Lucky?" Button (Suggests random item)
+- Website Splash Page
+- Recently Viewed Items
+- Google Calender API for Discount Code Expiry Date
+- Seller Announcements
+- Google Analytics API for Seller to View Buyer Demographics
+- Save for Later
+- Seller Dashboard
+- Social Media Integration
+- Item Quantities
+- User Verification With Email
 
 ## Non-functional Requirements
 
-1. non-functional
-2. non-functional
-3. non-functional
-4. non-functional
+1. Expected to work on Google Chrome
+2. Multilingual Support with Google Translate?
+3. (HP) UI Interactive Interface
+4. Attempt to be seccure:
+  a. Lock out user after multiple failed login attempts
+  b. Prevent basic SQL injection
+5. Accessibility function (dark mode)
 
 ## Use Cases
 
-1. Use Case Name (Should match functional requirement name)
-- **Pre-condition:** <can be a list or short description> Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+### 1. Add Item to Cart - Nhan
+- **Summary:** The user can add an item to their shopping cart.
+- **Actors:** User
+- **Pre-Condition:** 
+  - The user is logged into their account.
+  - The user is viewing an item.
+  - The item is available for purchase.
+- **Trigger:** The user clicks "Add to Cart" from an item page.
+- **Primary Sequence:** 
+  1. The cart is updated with the product added to the total.
+  2. The user's subtotal is updated according to the item price.
+- **Alternative Sequence:** The item is not available.
+  1. The system shows the user that the item is not available to add to cart.
+- **Alternative Sequence:** The item already exists in the cart.
+  1. The system notifies the user that the item has already been added to the cart.
+- **Post Conditions:**
+  - The item is available and is not already in the cart:
+    - The user's cart is updated with the item.
+- **Functional Requirements:**
+  - The system can check how many items the user has in their cart.
+  - The system can update the user's cart.
+  - The system can update the user's subtotal.
+- **Non-Functional Requirements:**
+  - The website is stylized.
+- **Glossary:**
+  - Item = A product that is sold on the website.
+  - User = Customer who wants to buy one or more items.
+  - Cart = A list of items the user would like to buy.
 
-- **Trigger:** <can be a list or short description> Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. 
+### 2. Remove item from cart - Nhan
+- **Summary:** The user can remove an item from the cart.
+- **Actors:** User
+- **Pre-Condition:** 
+  - The user is logged into their account.
+  - The user is viewing their cart.
+  - The user has at least 1 item in the cart.
+- **Trigger:** The user clicks “Remove from cart” from the cart.
+- **Primary Sequence:** 
+  1. The item is removed from the cart.
+  2. The user’s subtotal is updated according to the product price.
+- **Alternative Sequence:** The item(s) are no longer in the cart.
+  1. The system informs the user that the item no longer exists in the cart.
+- **Post Conditions:**
+  - The item is has a quantity greater than 1:
+    - The user’s cart is updated.
+    - The user’s subtotal is updated.
+  - The item no longer exist in the cart:
+    - The user is informed that the item no longer exists.
+    - The page refreshes.
+- **Functional Requirements:**
+  - The system can check how many items the user has in their cart
+  - The system can update the user’s cart
+  - The system can update the user’s subtotal
+- **Non-Functional Requirements:**
+  - The website is stylized.
+- **Glossary:**
+  - Item = A product that is sold on the website.
+  - User = Customer who wants to buy one or more items.
+  - Cart = A list of items the user would like to buy.
 
-- **Primary Sequence:**
-  
-  1. Ut enim ad minim veniam, quis nostrum e
-  2. Et sequi incidunt 
-  3. Quis aute iure reprehenderit
-  4. ... 
-  5. ...
-  6. ...
-  7. ...
-  8. ...
-  9. ...
-  10. <Try to stick to a max of 10 steps>
+### 3. Buy items from cart - Aaron
+- **Summary:** A user can buy the items in their cart.
+- **Actors:** User
+- **Pre-Condition:** 
+  - The user is logged into their account.
+  - The user has items in their cart.
+  - The user is currently on their cart page.
+- **Trigger:** The user clicks “Buy Cart” from their cart page.
+- **Primary Sequence:** 
+  1. The system shows the user their subtotal.
+  2. The system shows a payment method using an outside payment platform.
+  3. The user selects their desired payment method using the outside platform.
+  4. The user clicks “Buy”.
+  5. The system checks the items availability.
+  6. The system charges the payment method.
+  7. The system marks the items as purchased.
+  8. The system shows the user that the items have been purchased.
+  9. The system adds the items to the user’s purchase history.
+- **Alternative Sequence:** The item(s) are not available.
+  1. The system shows the user the item(s) that is not available.
+  2. The user must remove the items that are unavailable.
+  3. Continue to Step 4 in Primary Sequence.
+- **Alternative Sequence:** The payment method cannot be charged.
+  1. The system tells the user that the payment method could not be charged.
+  2. The user selects a new payment method.
+  3. Continue to Step 4 in Primary Sequence.
+- **Alternative Sequence:** The user clicks “Cancel Purchase
+  1. The user is sent back to the cart page.
+- **Post Conditions:**
+  - The items were bought:
+    - The item(s) sold are made unavailable to be sold again
+    - The quantity of the item decreases on bulk items.
+    - The items are sent to the user.
+  - The items were not bought:
+    - The item(s) are not changed.
+- **Functional Requirements:**
+  - The system can check whether items are available.
+  - The system can check whether a payment has gone through.
+  - The system can make purchased items unavailable.
+- **Non-Functional Requirements:**
+  - The website is stylized.
+- **Glossary:**
+  - Item = A product that is sold on the website.
+  - User = Customer who wants to buy one or more items.
+  - Cart = A list of items the user would like to buy.
 
-- **Primary Postconditions:** <can be a list or short description> 
+### 4. Seller Creates Item - Anh
 
-- **Alternate Sequence:** <you can have more than one alternate sequence to describe multiple issues that may arise>
-  
-  1. Ut enim ad minim veniam, quis nostrum e
-  2. Ut enim ad minim veniam, quis nostrum e
-  3. ...
+### 5. Seller Deletes Item - Haomiao
 
-- **Alternate Sequence <optional>:** <you can have more than one alternate sequence to describe multiple issues that may arise>
-  
-  1. Ut enim ad minim veniam, quis nostrum e
-  2. Ut enim ad minim veniam, quis nostrum e
-  3. ...
-2. Use Case Name (Should match functional requirement name)
-   ...
+### 6. View Purchase History - Aaron
+- **Summary:** A user can view all purchased items
+- **Actors:** User
+- **Pre-Condition:** 
+  - The user is logged into their account.
+- **Trigger:** The user visits the purchase history page.
+- **Primary Sequence:** 
+  1. The system searches for purchases tied to the user.
+  2. The system displays each purchase sequentially on the page.
+  3. The user can click on the item of a purchase to be brought to its item page.
+- **Alternative Sequence:** The user does not have any purchases.
+  1. The system displays that no purchases could be found.
+- **Alternative Sequence:** The user is not logged in.
+  1. The system redirects the user to the login page.
+- **Post Conditions:**
+  - The items are displayed on the page to the user.
+- **Functional Requirements:**
+  - The system has access to the user and purchases databases.
+- **Non-Functional Requirements:**
+  - The website is stylized.
+- **Glossary:**
+  - Purchased Item = A product that was purchased by the user.
+  - User = Customer who wants to buy one or more items.
