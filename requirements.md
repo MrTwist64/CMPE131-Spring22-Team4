@@ -163,8 +163,92 @@
   - Cart = A list of items the user would like to buy.
 
 ### 4. Seller Creates Item - Anh
+- **Summary:** A user can create an item to sell.
+- **Actors:** User
+- **Pre-Condition:** 
+  - The user is logged into their account.
+  - The user has an item they intend to sell.
+  - The user knows basic information and description of the item.
+  - The system allows any user to buy and sell.
+- **Trigger:** The user clicks on “sell an item”.
+- **Primary Sequence:** 
+  1. The user adds the product name.
+  2. The user selects item condition (new, used).
+  3. The user selects item categories and tags.
+  4. The user adds an item description about the product.
+  5. The user selects the quantity of the item to sell.
+  6. The user includes the price of the item.
+  7. The system prompts the user to upload photos of the item.
+  8. The user uploads item photos.
+  9. The user clicks “post to listing”.
+  10. The system adds the item to the database of the items to be sold.
+- **Alternative Sequence:** The user does not fill in all the required information of the item (product name, condition, categories, description, and price)
+  1. The system will cause an error and display the item has not been added yet.
+  2. The system displays which item information is blank.
+  3. The system prompts the user to add missing required information.
+  4. When the user adds in the information of the item, the system will allow the user to add the item into the sell items database.
+- **Alternative Sequence:** The user does not upload any item photos.
+  1. The system uploads a placeholder photo.
+  2. The system adds the item to the items database.
+- **Alternative Sequence:** The user does not add an item to sell.
+  1. The system would cause an error due to missing item information.
+  2. The user clicks the back button.
+  3. The item is not added to the sell items database and is not listed in the store.
+- **Alternative Sequence:** The user is not logged in.
+  1. The system redirects the user to the login page.
+- **Post Conditions:**
+  - The user listed an item to sell.
+    - The items are displayed on the page to the user as products in their seller inventory.
+    - The items are displayed on the page to other users who did not list that particular product as items they can buy.
+  - The user did not list an item to sell.
+    - The seller inventory page remains the same.
+    - The items listing page remains the same.
+- **Functional Requirements:**
+  - The system has access to the user and items databases.
+  - The system creates an item to sell.
+- **Non-Functional Requirements:**
+  - The website is stylized and consistent.
+- **Glossary:**
+  - Required information of the item = product name, condition, categories, description, and price
+  - Item to sell = A product that the user wants to sell.
+  - User = Customer who wants to sell one or more items.
 
 ### 5. Seller Deletes Item - Haomiao
+- **Summary:** A user can select an item to delete.
+- **Actors:** User
+- **Pre-Condition:** 
+  - The user is logged into their account.
+  - The user has an item they intend to delete.
+  - The user knows basic information and description of the item.
+  - The system allows any user to delete.
+- **Trigger:** The user clicks on “delete an item”.
+- **Primary Sequence:** 
+  1. The user adds the product name.
+  2. The user selects item.
+  3. The user selects the quantity of the item to delete.
+  4. The user includes the price of the item.
+  5. The user clicks “delete”.
+  6. The system adds the item to the database of the items to be deleted.
+- **Alternative Sequence:** The user does not select the item.
+  1. The system will cause an error and display the item has not been selected yet.
+  2. The system displays which item information is blank.
+  3. The system prompts the user to select.
+  4. When the user select the item, the system will allow the user to add the item into the delete items database.
+- **Alternative Sequence:** The user is not logged in.
+  1. The system redirects the user to the login page.
+- **Post Conditions:**
+  - The user listed an item to delete.
+    - The items are displayed on the page to the user as products in their delete inventory.
+    - The items are displayed on the page to other users that the items are deleted.
+- **Functional Requirements:**
+  - The system has access to the user and items databases.
+  - The system creates an item to delete.
+- **Non-Functional Requirements:**
+  - The website is stylized.
+- **Glossary:**
+  - required information of the item = product name, condition, categories, description, and price
+  - Item to delete= A product that the user wants to sell.
+  - User = Customer who wants to delete one or more items.
 
 ### 6. View Purchase History - Aaron
 - **Summary:** A user can view all purchased items
