@@ -24,3 +24,10 @@
 - Minutes:
   1. Assigned functional requirements to team members.
   2. Discussed final steps needed for submission.
+
+### 2022-04-22 at 1:00pm till 1:10pm
+- Attended: Aaron, Ahn, Nhan, Haomiao
+- Meeting Location: Discord
+- Scheduled: Yes
+- Minutes:
+  1. Discussed timeline for project and functional requirements.
