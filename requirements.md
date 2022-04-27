@@ -4,11 +4,11 @@
 1. Add User Database - Anh
 2. Login - Nhan
 3. Logout - Nhan
-4. Create New Account - Aaron
-5. Delete Account - Haomiao
+4. Create New Account - Nhan
+5. Delete Account - Nhan
 6. Add Item Database - Anh
-7. Seller Create Item - Nhan
-8. Seller Delete Item - Nhan
+7. Seller Create Item - Aaron
+8. Seller Delete Item - Haomiao
 9. View Available Items - Aaron
 10. View Single Item - Aaron
 11. Add Cart Database - Anh
