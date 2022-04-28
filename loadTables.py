@@ -190,3 +190,43 @@ for i in items:
 i = Items.query.get(0)
 print(i)
 print()
+	
+def addUser():
+	# prompt for first name
+	first_name = "first"
+	# prompt for last name
+	last_name = "last"
+	# prompt for username
+	username = "hiiiibye"
+	# prompt for email
+	email = "a@gmail.com"
+	# finally password
+	password_hash = "ajdfkjdfk"
+	
+		# convert the password into a hash
+	userInsert = User(first_name=first_name, last_name=last_name, username=username, email=email, password_hash='randomHash') 
+	db.session.add(userInsert)
+
+def deleteUser(username):
+	# does not work yet
+	#stmt = select(User).where(User.username == username)
+	
+	# goes through the entire table to find schema with a 	# matching username
+	users = User.query.all()
+	for u in users:
+		if (u.username == username):
+			db.session.delete(u)
+	
+addUser()
+db.session.commit()
+
+users = User.query.all()
+for u in users:
+	print(u.uID, u.username)
+	
+deleteUser("hiiiibye")
+db.session.commit()
+
+users = User.query.all()
+for u in users:
+	print(u.uID, u.username)

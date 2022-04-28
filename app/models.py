@@ -1,5 +1,5 @@
 from app import db
-from sqlalchemy import CheckConstraint 
+from sqlalchemy import CheckConstraint, select 
 
 class User(db.Model):
     uID = db.Column(db.Integer, primary_key=True)
