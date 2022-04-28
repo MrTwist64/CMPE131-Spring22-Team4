@@ -1,4 +1,5 @@
-from app import myobj
+from app import myobj, db
+from app.models import User, Category, Items
 from flask import flash, redirect, render_template
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
@@ -15,3 +16,9 @@ def about():
 @myobj.route('/login.html', methods=['GET', 'POST'])
 def login():
     return render_template('login.html')
+
+@myobj.route('/all_items.html', methods=['GET', 'POST'])
+def all_items():
+    items = Items.query.all()
+    categories = Category.query.all()
+    return render_template('all_items.html', items=items, categories=categories)
