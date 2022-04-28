@@ -190,7 +190,8 @@ for i in items:
 i = Items.query.get(0)
 print(i)
 print()
-	
+
+# create a new User and insert them into the database	
 def addUser():
 	# prompt for first name
 	first_name = "first"
@@ -207,11 +208,12 @@ def addUser():
 	userInsert = User(first_name=first_name, last_name=last_name, username=username, email=email, password_hash='randomHash') 
 	db.session.add(userInsert)
 
+#deletes a user with a given username input from the database
 def deleteUser(username):
 	# does not work yet
 	#stmt = select(User).where(User.username == username)
 	
-	# goes through the entire table to find schema with a 	# matching username
+	# goes through the entire table to find schema with a matching username
 	users = User.query.all()
 	for u in users:
 		if (u.username == username):
