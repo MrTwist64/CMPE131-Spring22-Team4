@@ -10,7 +10,7 @@
 7. :x: Seller Create Item - Aaron
 8. :x: Seller Delete Item - Aaron
 9. :heavy_check_mark: View Available Items - Aaron
-10. :x: View Single Item - Aaron
+10. :heavy_check_mark: View Single Item - Aaron
 11. :x: Add Cart Database - Anh
 12. :x: Add Item to Cart - Anh
 13. :x: Remove Item From Cart - 
