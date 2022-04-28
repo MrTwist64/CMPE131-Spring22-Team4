@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Available Items
+{% endblock %}
+
+{% block content %}
+<h1>Available Items</h1>
+{% for item in items %}
+<div>
+<table>
+    <thead>
+        <tr>
+            <th colspan="2"><a href="/i/{{item.itemID}}">{{item.condition}} | {{item.product_name}} | ${{item.price}}</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Picture</td>
+            <td>
+                Quantity: {{item.quantity}} <br/>
+                Category: {{categories[item.categoryID].category_name}} <br/>
+                Description: {{item.description}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<br/>
+{% endfor %}
+{% endblock %}
