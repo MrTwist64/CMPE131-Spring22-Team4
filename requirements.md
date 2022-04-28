@@ -2,27 +2,27 @@
 
 ### High Priority
 - [x] Add User Database - Anh
-- [] Login - Nhan
-- [] Logout - Nhan
-- [] Create New Account - Nhan
-- [] Delete Account - Nhan
+- [ ] Login - Nhan
+- [ ] Logout - Nhan
+- [ ] Create New Account - Nhan
+- [ ] Delete Account - Nhan
 - [x] Add Item Database - Anh
-- [] Seller Create Item - Aaron
-- [] Seller Delete Item - Aaron
+- [ ] Seller Create Item - Aaron
+- [ ] Seller Delete Item - Aaron
 - [x] View Available Items - Aaron
-- [] View Single Item - Aaron
-- [] Add Cart Database - Anh
-- [] Add Item to Cart - Anh
-- [] Remove Item From Cart - 
-- [] Buy Items From Cart - 
-- [] Maintain UI Consistency - Nhan
+- [ ] View Single Item - Aaron
+- [ ] Add Cart Database - Anh
+- [ ] Add Item to Cart - Anh
+- [ ] Remove Item From Cart - 
+- [ ] Buy Items From Cart - 
+- [ ] Maintain UI Consistency - Nhan
 
 ### Medium Priority
-- [] (HP) Add Item Categories
-- [] Purchase History Database
-- [] View Purchase History
-- [] Picture Database
-- [] (HP) Add Pictures To Items
+- [ ] (HP) Add Item Categories
+- [ ] Purchase History Database
+- [ ] View Purchase History
+- [ ] Picture Database
+- [ ] (HP) Add Pictures To Items
 
 ### Low Priority
 - Add Discount Codes
