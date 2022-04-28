@@ -62,6 +62,14 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+@myobj.route("/delete_user")
+# @login_required
+def delete_user():
+    user = current_user
+    db.session.delete(user)
+    db.session.commit()
+    logout_user()
+    return redirect(url_for('index'))
 
 @myobj.route('/all_items', methods=['GET', 'POST'])
 def all_items():
