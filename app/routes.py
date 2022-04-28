@@ -3,9 +3,8 @@ from app.models import User, Category, Items
 from flask import flash, redirect, render_template, url_for, request, Flask
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
-from flask_login import UserMixin, logout_user
+from flask_login import UserMixin, logout_user, LoginManager, login_user, current_user
 from wtforms.validators import DataRequired, Email, EqualTo
-from flask_login import LoginManager, login_user, current_user
 from app.forms import RegistrationForm, LoginForm
 
 login_manager = LoginManager()
@@ -62,6 +61,7 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+
 @myobj.route("/delete_user")
 # @login_required
 def delete_user():
@@ -70,6 +70,7 @@ def delete_user():
     db.session.commit()
     logout_user()
     return redirect(url_for('index'))
+
 
 @myobj.route('/all_items', methods=['GET', 'POST'])
 def all_items():
