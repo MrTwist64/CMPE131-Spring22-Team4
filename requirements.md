@@ -2,10 +2,10 @@
 
 ### High Priority
 1. :heavy_check_mark: Add User Database - Anh
-2. :x: Login - Nhan
-3. :x: Logout - Nhan
-4. :x: Create New Account - Nhan
-5. :x: Delete Account - Nhan
+2. :heavy_check_mark: Login - Nhan
+3. :heavy_check_mark: Logout - Nhan
+4. :heavy_check_mark: Create New Account - Nhan
+5. :heavy_check_mark: Delete Account - Nhan
 6. :heavy_check_mark: Add Item Database - Anh
 7. :x: Seller Create Item - Aaron
 8. :x: Seller Delete Item - Aaron
