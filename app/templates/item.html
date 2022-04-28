@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{{item.product_name}}
+{% endblock %}
+
+{% block content %}
+<h1>{{item.condition}} | {{item.product_name}} | ${{item.price}}</h1>
+<div>Picture</div>
+<p>Quantity: {{item.quantity}}</p>
+<p>Category: {{category}}</p>
+<p>Seller: {{seller}}</p>
+<p>Description: {{item.description}}</p>
+{% endblock %}
