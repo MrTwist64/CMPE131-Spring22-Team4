@@ -6,8 +6,19 @@
     </head>
     <body>
         <div id="header">
+
+            <div>
+            <a href="index">Home</a>
+            {% if current_user.is_anonymous %}
+            <a href="login">Login</a>
+            {% else %}
+            <p>Welcome {{current_user.username}}</p>
+            <a href="logout">Logout</a>
+            {% endif %}
+            </div>
+
             <h4>Site Links</h4>
-            <a href="index">Home</a> - <a href="all_items">All Items</a> - <a href="about">About</a> - <a href="login">Login</a>
+            <a href="index">Home</a> - <a href="all_items">All Items</a> - <a href="about">About</a> - <a href="login">Login</a> - <a href="register">Register</a>
         </div>
         <div id="content">
             {% block content %}{% endblock %}

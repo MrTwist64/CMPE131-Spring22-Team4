@@ -13,6 +13,8 @@ myobj.config.from_mapping(
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 )
 
+myobj.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 db = SQLAlchemy(myobj)
 
 from app import routes, models
