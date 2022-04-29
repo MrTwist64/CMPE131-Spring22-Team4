@@ -1,5 +1,5 @@
 from app import myobj, db
-from app.models import User, Category, Items
+from app.models import User, Category, Items, Cart
 from flask import flash, redirect, render_template, url_for, request, Flask
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
