@@ -190,3 +190,4 @@ for i in items:
 i = Items.query.get(0)
 print(i)
 print()
+
