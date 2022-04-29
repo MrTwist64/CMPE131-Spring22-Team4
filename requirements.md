@@ -1,28 +1,28 @@
 ## Functional Requirements
 
 ### High Priority
-1. :heavy_check_mark: Add User Database - Anh
-2. :x: Login - Nhan
-3. :x: Logout - Nhan
-4. :x: Create New Account - Nhan
-5. :x: Delete Account - Nhan
-6. :heavy_check_mark: Add Item Database - Anh
+1. :x: Login - Nhan
+2. :x: Logout - Nhan
+3. :x: Create New Account - Nhan
+4. :x: Delete Account - Nhan
+5. :x: Update Account - Nhan
+6. :x: Forgot Password - Nhan
 7. :x: Seller Create Item - Aaron
-8. :x: Seller Delete Item - Aaron
-9. :heavy_check_mark: View Available Items - Aaron
-10. :heavy_check_mark: View Single Item - Aaron
-11. :x: Add Cart Database - Anh
+8. :x: Seller Update Item - Aaron
+9. :x: Seller Delete Item - Aaron
+10. :heavy_check_mark: View Available Items - Aaron
+11. :heavy_check_mark: View Single Item - Aaron
 12. :x: Add Item to Cart - Anh
-13. :x: Remove Item From Cart - 
-14. :x: Buy Items From Cart - 
+13. :x: Remove Item From Cart - Anh
+14. :x: Buy Items From Cart - Anh
 15. :x: Maintain UI Consistency - Nhan
+16. :x: (HP) Add Pictures To Items - TBD
 
 ### Medium Priority
-16. :x: (HP) Add Item Categories
-17. :x: Purchase History Database
-18. :x: View Purchase History
-19. :x: Picture Database
-20. :x: (HP) Add Pictures To Items
+17. :x: (HP) Add Item Categories
+18. :x: Purchase History Database
+19. :x: View Purchase History
+20. :x: Picture Database
 
 ### Low Priority
 - Add Discount Codes
