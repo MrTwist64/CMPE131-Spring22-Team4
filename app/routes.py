@@ -5,7 +5,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from flask_login import UserMixin, logout_user, LoginManager, login_user, current_user
 from wtforms.validators import DataRequired, Email, EqualTo
-from app.forms import RegistrationForm, LoginForm, forgotPassForm, changePassForm
+from app.forms import RegistrationForm, LoginForm, forgotPassForm, changePassForm, updateForm
 
 login_manager = LoginManager()
 login_manager.init_app(myobj)
@@ -71,7 +71,7 @@ def forgotPass():
         else:
             flash('Invalid email address')
         return redirect(url_for('forgotPass'))
-    return render_template('forgotPass.html', form=form)
+    return render_template('forgot_pass.html', form=form)
 
 
 @myobj.route('/changePass', methods=['GET', 'POST'])
@@ -104,6 +104,32 @@ def delete_user():
     db.session.commit()
     logout_user()
     return redirect(url_for('index'))
+
+
+@myobj.route("/update_info", methods=['GET', 'POST'])
+# @login_required
+def update_info():
+    form = updateForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=current_user.email).first()
+        if request.form.get('username', None):
+            user.username = form.username.data
+        if request.form.get('firstname', None):
+            user.first_name = form.firstname.data
+        if request.form.get('lastname', None):
+            user.last_name = form.lastname.data
+        if request.form.get('password1', None) and request.form.get('password2', None):
+            user.set_password(form.password1.data)
+        if request.form.get('email', None):
+            user.email = form.email.data
+        if request.form.get('securityQuestion', None):
+            user.securityQuestion = form.securityQuestion.data
+        if request.form.get('securityQuestionAnswer', None):
+            user.set_security_answer(form.securityQuestionAnswer.data)
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for("index"))
+    return render_template('update_info.html', form=form)
 
 
 @myobj.route('/all_items', methods=['GET', 'POST'])
