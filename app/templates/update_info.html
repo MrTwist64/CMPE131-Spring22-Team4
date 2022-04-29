@@ -1,5 +1,5 @@
 
-<h1> Create an account! </h1>
+<h1> Update your info </h1>
  <form action="" method="POST">
     {{ form.hidden_tag() }}
      <div>
@@ -59,10 +59,11 @@
      </div>
      <br>
      <div>
-          {{ form.submit() }}
+         {{ form.submit() }}
      </div>
  </form>
- <br>
+
+
 {% for message in get_flashed_messages() %}
 <p>Error: {{message}} </p>
 {% endfor %}

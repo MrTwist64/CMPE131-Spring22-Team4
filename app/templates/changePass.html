@@ -1,0 +1,35 @@
+<h1> {{ email }}</h1>
+<h1><p> {{ securityQuestion }}</p></h1>
+ <form action="" method="POST">
+    {{ form.hidden_tag() }}
+
+     <br>
+     <div>
+          {{ form.securityQuestionAnswer(placeholder="Answer")}}
+          {% for error in form.securityQuestionAnswer.errors %}
+          <p>{{ error }}</p>
+          {% endfor %}
+     </div>
+     <br>
+     <div>
+          {{ form.password1(placeholder="password")}}
+          {% for error in form.password1.errors %}
+          <p>{{ error }}</p>
+          {% endfor %}
+     </div>
+     <br>
+     <div>
+          {{ form.password2(placeholder="Confirm password")}}
+          {% for error in form.password2.errors %}
+          <p>{{ error }}</p>
+          {% endfor %}
+     </div>
+     <br>
+     <div>
+         {{ form.submit() }}
+     </div>
+
+ </form>
+{% for message in get_flashed_messages() %}
+<p>Error: {{message}} </p>
+{% endfor %}
