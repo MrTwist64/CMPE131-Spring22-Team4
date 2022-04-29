@@ -1,10 +1,10 @@
 ## Functional Requirements
 
 ### High Priority
-1. :x: Login - Nhan
-2. :x: Logout - Nhan
-3. :x: Create New Account - Nhan
-4. :x: Delete Account - Nhan
+1. :heavy_check_mark: Login - Nhan
+2. :heavy_check_mark: Logout - Nhan
+3. :heavy_check_mark: Create New Account - Nhan
+4. :heavy_check_mark: Delete Account - Nhan
 5. :x: Update Account - Nhan
 6. :x: Forgot Password - Nhan
 7. :x: Seller Create Item - Aaron

@@ -1,10 +1,27 @@
-{% extends "layout.html" %}
+<h1><a href="register">Register!</a></h1>
+<form action="" method="POST">
 
-{% block title %}
-Login Page!
-{% endblock %}
-
-{% block content %}
-<h1>Login</h1>
-<p>Put login stuff on this page</p>
-{% endblock %}
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.email(placeholder="E-mail")}}
+        {% for error in form.email.errors %}
+        <p>{{ error }}</p>
+        {% endfor %}
+    </div>
+    <br>
+    <div>
+         {{ form.password(placeholder="password")}}
+         {% for error in form.password.errors %}
+         <p>{{ error }}</p>
+         {% endfor %}
+    </div>
+    <p>{{ form.remember() }} {{ form.remember.label }}</p>
+    <br>
+    <p>
+         {{ form.submit() }}
+    </p>
+</form>
+<br>
+{% for message in get_flashed_messages() %}
+<p>Error: {{message}} </p>
+{% endfor %}
