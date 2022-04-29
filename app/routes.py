@@ -3,12 +3,17 @@ from app.models import User, Category, Items, Cart
 from flask import flash, redirect, render_template, url_for, request, session
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
-from flask_login import UserMixin, logout_user, LoginManager, login_user, current_user
+from flask_login import UserMixin, logout_user, LoginManager, login_user, current_user, login_required
 from wtforms.validators import DataRequired, Email, EqualTo
-from app.forms import RegistrationForm, LoginForm, forgotPassForm, changePassForm, updateForm
+from app.forms import RegistrationForm, LoginForm, forgotPassForm, changePassForm, updateForm, CreateItemForm
 
 login_manager = LoginManager()
 login_manager.init_app(myobj)
+
+
+@login_manager.unauthorized_handler
+def unauthorized_callback():
+    return redirect('/login')
 
 
 @login_manager.user_loader
@@ -90,14 +95,14 @@ def changePass():
 
 
 @myobj.route("/logout")
-# @login_required
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('index'))
 
 
 @myobj.route("/delete_user")
-# @login_required
+@login_required
 def delete_user():
     user = current_user
     db.session.delete(user)
@@ -107,7 +112,7 @@ def delete_user():
 
 
 @myobj.route("/update_info", methods=['GET', 'POST'])
-# @login_required
+@login_required
 def update_info():
     form = updateForm()
     if form.validate_on_submit():
@@ -145,3 +150,22 @@ def view_item(itemID):
     category = Category.query.get(item.categoryID).category_name
     seller = User.query.get(item.sellerID).username
     return render_template('item.html', item=item, category=category, seller=seller)
+
+
+@myobj.route('/create_item', methods=['GET', 'POST'])
+@login_required
+def create_item():
+    form = CreateItemForm()
+    if (form.validate_on_submit()):
+        item = Items()
+        item.product_name = form.product_name.data
+        item.description = form.description.data
+        item.price = form.price.data
+        item.quantity = form.quantity.data
+        item.condition = form.condition.data
+        item.categoryID = form.category.data
+        item.sellerID = current_user.id
+        db.session.add(item)
+        db.session.commit()
+        return redirect(f'/i/{item.itemID}')
+    return render_template('create_item.html', form=form)
