@@ -7,33 +7,33 @@ Create Item
 {% block content %}
 <form action="" method="POST">
     {{form.hidden_tag()}}
-    <div>
+    <p>
         {{ form.product_name.label }}
         {{ form.product_name }}
-    </div>
-    <div>
+    </p>
+    <p>
         {{ form.description.label }}
         {{ form.description }}
-    </div>
-    <div>
+    </p>
+    <p>
         {{ form.price.label }}
         {{ form.price }}
-    </div>
-    <div>
+    </p>
+    <p>
         {{ form.quantity.label }}
         {{ form.quantity }}
-    </div>
-    <div>
+    </p>
+    <p>
         {{ form.condition.label }}
         {{ form.condition }}
-    </div>
-    <div>
+    </p>
+    <p>
         {{ form.category.label }}
         {{ form.category }}
-    </div>
-    <div>
+    </p>
+    <p>
         {{ form.submit() }}
-    </div>
+    </p>
 </form>
 
 {% endblock %}
