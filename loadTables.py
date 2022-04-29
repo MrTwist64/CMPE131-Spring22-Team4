@@ -6,7 +6,7 @@ db.drop_all()
 db.create_all()
 
 # insert rows for User table
-userTest = User(id=0, first_name='Testy', last_name='Test', username='testyTest', email='testy@gmail.com', password_hash='randomHash')  
+userTest = User(id=0, first_name='Testy', last_name='Test', username='testyTest', email='testy@gmail.com', password_hash='randomHash', securityQuestion='a', question_answer_hash= 'a')
 
 userTest2 = User(id=1, first_name='Taeyong', last_name='Lee', username='ty_xoxo', email='lty1995@neotech.com', password_hash='randomHash2')
 userTest3 = User(id=2, first_name='Johnny', last_name='Suh', username='johnnysuhlee', email='jjsuh@neotech.com', password_hash='randomHash3')

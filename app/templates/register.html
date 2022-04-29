@@ -31,6 +31,20 @@
      </div>
      <br>
      <div>
+          {{ form.securityQuestion(placeholder="Security Question")}}
+          {% for error in form.securityQuestion.errors %}
+          <p>{{ error }}</p>
+          {% endfor %}
+     </div>
+     <br>
+     <div>
+          {{ form.securityQuestionAnswer(placeholder="Answer")}}
+          {% for error in form.password2.errors %}
+          <p>{{ error }}</p>
+          {% endfor %}
+     </div>
+     <br>
+     <div>
           {{ form.submit() }}
      </div>
  </form>

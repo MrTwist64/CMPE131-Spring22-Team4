@@ -1,11 +1,11 @@
 from app import myobj, db
 from app.models import User, Category, Items, Cart
-from flask import flash, redirect, render_template, url_for, request, Flask
+from flask import flash, redirect, render_template, url_for, request, session
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from flask_login import UserMixin, logout_user, LoginManager, login_user, current_user
 from wtforms.validators import DataRequired, Email, EqualTo
-from app.forms import RegistrationForm, LoginForm
+from app.forms import RegistrationForm, LoginForm, forgotPassForm, changePassForm
 
 login_manager = LoginManager()
 login_manager.init_app(myobj)
@@ -34,8 +34,9 @@ def register():
         if db.session.query(db.exists().where(User.email == form.email.data)).scalar():
             flash('Already registered')
         else:
-            user = User(username=form.username.data, email=form.email.data)
+            user = User(username=form.username.data, email=form.email.data, securityQuestion=form.securityQuestion.data)
             user.set_password(form.password1.data)
+            user.set_security_answer(form.securityQuestionAnswer.data)
             db.session.add(user)
             db.session.commit()
             return redirect(url_for('login'))
@@ -53,6 +54,37 @@ def login():
             return redirect(next or url_for('index'))
         flash('Invalid email address or Password.')
     return render_template('login.html', form=form)
+
+
+@myobj.route('/forgotPass', methods=['GET', 'POST'])
+def forgotPass():
+    form = forgotPassForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user is not None:
+            session['email'] = form.email.data
+            form = changePassForm()
+
+            return redirect(url_for('changePass'))
+        else:
+            flash('Invalid email address')
+        return redirect(url_for('forgotPass'))
+    return render_template('forgotPass.html', form=form)
+
+
+@myobj.route('/changePass', methods=['GET', 'POST'])
+def changePass():
+    form = changePassForm()
+    user = User.query.filter_by(email=session['email']).first()
+    if form.validate_on_submit():
+        if user.check_security_answer(form.securityQuestionAnswer.data):
+            user.set_password(form.password1.data)
+            db.session.add(user)hone
+            db.session.commit()
+            return redirect(url_for('index'))
+        else:
+            flash('Invalid answer')
+    return render_template('changePass.html', form=form, email=session['email'], securityQuestion=user.securityQuestion)
 
 
 @myobj.route("/logout")
