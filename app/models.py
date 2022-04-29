@@ -12,6 +12,14 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
+    securityQuestion = db.Column(db.String(128))
+    question_answer_hash = db.Column(db.String(128))
+
+    def set_security_answer(self, securityQuestionAnswer):
+        self.question_answer_hash = generate_password_hash(securityQuestionAnswer)
+
+    def check_security_answer(self, securityQuestionAnswer):
+        return check_password_hash(self.question_answer_hash, securityQuestionAnswer)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
