@@ -31,3 +31,13 @@
 - Scheduled: Yes
 - Minutes:
   1. Discussed timeline for project and functional requirements.
+
+### 2022-04-28 at 4:45pm till 5:30pm
+- Attended: Aaron, Ahn, Nhan
+- Meeting Location: In-Class
+- Scheduled: Yes
+- Minutes:
+  1. Discussed what we've completed so far.
+  2. Reworked functional requirements.
+  3. Worked on Gantt Chart.
+  4. Discussed timeline heading toward 2nd milestone.
