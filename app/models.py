@@ -49,7 +49,7 @@ class Items(db.Model):
 class Cart(db.Model):
     cartID = db.Column(db.Integer, primary_key=True)
     id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'))
-    itemID = db.Column(db.Integer, db.ForeignKey('item.itemID', ondelete='CASCADE'))
+    itemID = db.Column(db.Integer, db.ForeignKey('items.itemID', ondelete='CASCADE'))
     quantity = db.Column(db.Integer, nullable= False)
     createdAt = db.Column(db.DateTime, server_default=func.now())
     modifiedAt = db.Column(db.DateTime, onupdate=func.now())
