@@ -3,6 +3,20 @@
  <form action="" method="POST">
     {{ form.hidden_tag() }}
      <div>
+         {{ form.firstname(placeholder="First")}}
+         {% for error in form.firstname.errors %}
+         <p>{{ error }}</p>
+         {% endfor %}
+     </div>
+     <br>
+     <div>
+         {{ form.lastname(placeholder="Last")}}
+         {% for error in form.username.errors %}
+         <p>{{ error }}</p>
+         {% endfor %}
+     </div>
+     <br>
+     <div>
          {{ form.username(placeholder="Username")}}
          {% for error in form.username.errors %}
          <p>{{ error }}</p>

@@ -32,9 +32,11 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         if db.session.query(db.exists().where(User.email == form.email.data)).scalar():
-            flash('Already registered')
+            flash('Email already registered')
+        elif db.session.query(db.exists().where(User.username == form.username.data)).scalar():
+            flash('Username already registered')
         else:
-            user = User(username=form.username.data, email=form.email.data, securityQuestion=form.securityQuestion.data)
+            user = User(first_name=form.firstname.data, last_name=form.lastname.data, username=form.username.data, email=form.email.data, securityQuestion=form.securityQuestion.data)
             user.set_password(form.password1.data)
             user.set_security_answer(form.securityQuestionAnswer.data)
             db.session.add(user)
@@ -79,7 +81,7 @@ def changePass():
     if form.validate_on_submit():
         if user.check_security_answer(form.securityQuestionAnswer.data):
             user.set_password(form.password1.data)
-            db.session.add(user)hone
+            db.session.add(user)
             db.session.commit()
             return redirect(url_for('index'))
         else:
