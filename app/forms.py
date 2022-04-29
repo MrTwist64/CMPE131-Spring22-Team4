@@ -78,3 +78,6 @@ class CreateItemForm(FlaskForm):
                                     ('17','Misc & Others')], 
                            validators=[DataRequired()])
     submit = SubmitField('Create Item')
+
+class DeleteItemForm(FlaskForm):
+    delete = SubmitField('Delete Item')

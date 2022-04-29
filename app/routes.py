@@ -5,7 +5,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from flask_login import UserMixin, logout_user, LoginManager, login_user, current_user, login_required
 from wtforms.validators import DataRequired, Email, EqualTo
-from app.forms import RegistrationForm, LoginForm, forgotPassForm, changePassForm, updateForm, CreateItemForm
+from app.forms import DeleteItemForm, RegistrationForm, LoginForm, forgotPassForm, changePassForm, updateForm, CreateItemForm
 
 login_manager = LoginManager()
 login_manager.init_app(myobj)
@@ -146,10 +146,15 @@ def all_items():
 
 @myobj.route('/i/<int:itemID>', methods=['GET', 'POST'])
 def view_item(itemID):
+    form = DeleteItemForm()
     item = Items.query.get(itemID)
+    if (form.validate_on_submit()):
+        db.session.delete(item)
+        db.session.commit()
+        return redirect(url_for("index"))
     category = Category.query.get(item.categoryID).category_name
-    seller = User.query.get(item.sellerID).username
-    return render_template('item.html', item=item, category=category, seller=seller)
+    seller = User.query.get(item.sellerID)
+    return render_template('item.html', item=item, category=category, seller=seller, current_user=current_user, form=form)
 
 
 @myobj.route('/create_item', methods=['GET', 'POST'])

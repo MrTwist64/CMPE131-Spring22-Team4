@@ -10,7 +10,7 @@
 6. :x: Forgot Password - Nhan
 7. :heavy_check_mark: Seller Create Item - Aaron
 8. :x: Seller Update Item - Aaron
-9. :x: Seller Delete Item - Aaron
+9. :heavy_check_mark: Seller Delete Item - Aaron
 10. :heavy_check_mark: View Available Items - Aaron
 11. :heavy_check_mark: View Single Item - Aaron
 12. :x: Add Item to Cart - Anh

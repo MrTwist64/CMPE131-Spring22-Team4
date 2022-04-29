@@ -9,6 +9,12 @@
 <div>Picture</div>
 <p>Quantity: {{item.quantity}}</p>
 <p>Category: {{category}}</p>
-<p>Seller: {{seller}}</p>
+<p>Seller: {{seller.username}}</p>
 <p>Description: {{item.description}}</p>
+{% if seller.id == current_user.id %}
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        <p>{{ form.delete() }}</p>
+    </form>
+{% endif %}
 {% endblock %}
