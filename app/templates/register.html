@@ -1,4 +1,10 @@
+{% extends "layout.html" %}
 
+{% block title %}
+Register
+{% endblock %}
+
+{% block content %}
 <h1> Create an account! </h1>
  <form action="" method="POST">
     {{ form.hidden_tag() }}
@@ -67,3 +73,4 @@
 <p>Error: {{message}} </p>
 {% endfor %}
  <a href="login">Login instead</a>
+{% endblock %}

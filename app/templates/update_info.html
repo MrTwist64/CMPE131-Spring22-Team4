@@ -1,4 +1,10 @@
+{% extends "layout.html" %}
 
+{% block title %}
+Update your info
+{% endblock %}
+
+{% block content %}
 <h1> Update your info </h1>
  <form action="" method="POST">
     {{ form.hidden_tag() }}
@@ -68,3 +74,4 @@
 <p>Error: {{message}} </p>
 {% endfor %}
  <a href="login">Login instead</a>
+{% endblock %}
