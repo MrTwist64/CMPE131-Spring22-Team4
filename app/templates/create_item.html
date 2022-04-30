@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Create Item
+{% endblock %}
+
+{% block content %}
+<form action="" method="POST">
+    {{form.hidden_tag()}}
+    <p>
+        {{ form.product_name.label }}
+        {{ form.product_name }}
+    </p>
+    <p>
+        {{ form.description.label }}
+        {{ form.description }}
+    </p>
+    <p>
+        {{ form.price.label }}
+        {{ form.price }}
+    </p>
+    <p>
+        {{ form.quantity.label }}
+        {{ form.quantity }}
+    </p>
+    <p>
+        {{ form.condition.label }}
+        {{ form.condition }}
+    </p>
+    <p>
+        {{ form.category.label }}
+        {{ form.category }}
+    </p>
+    <p>
+        {{ form.submit() }}
+    </p>
+</form>
+
+{% endblock %}

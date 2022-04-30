@@ -16,13 +16,15 @@
             <p>Welcome {{current_user.username}}</p>
             <a href="update_info">Update Info</a> -
             <a href="logout">Logout</a> -
-            <a href="delete_user">Delete Account</a>
+            <a href="delete_user">Delete Account</a> -
+            <a href="create_item">Create New Item</a>
             {% endif %}
             </div>
 
             <h4>Site Links</h4>
             <a href="index">Home</a> - <a href="all_items">All Items</a> - <a href="about">About</a> - <a href="login">Login</a> - <a href="register">Register</a>
         </div>
+        <br/>
         <div id="content">
             {% block content %}{% endblock %}
         </div>

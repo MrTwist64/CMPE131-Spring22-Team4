@@ -1,15 +1,16 @@
 ## Functional Requirements
 
 ### High Priority
+
 1. :heavy_check_mark: Login - Nhan
 2. :heavy_check_mark: Logout - Nhan
 3. :heavy_check_mark: Create New Account - Nhan
 4. :heavy_check_mark: Delete Account - Nhan
 5. :x: Update Account - Nhan
 6. :x: Forgot Password - Nhan
-7. :x: Seller Create Item - Aaron
+7. :heavy_check_mark: Seller Create Item - Aaron
 8. :x: Seller Update Item - Aaron
-9. :x: Seller Delete Item - Aaron
+9. :heavy_check_mark: Seller Delete Item - Aaron
 10. :heavy_check_mark: View Available Items - Aaron
 11. :heavy_check_mark: View Single Item - Aaron
 12. :x: Add Item to Cart - Anh
@@ -19,7 +20,7 @@
 16. :x: (HP) Add Pictures To Items - TBD
 
 ### Medium Priority
-17. :x: (HP) Add Item Categories
+17. :heavy_check_mark: (HP) Add Item Categories
 18. :x: Purchase History Database
 19. :x: View Purchase History
 20. :x: Picture Database
