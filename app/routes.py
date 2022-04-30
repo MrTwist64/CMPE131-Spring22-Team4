@@ -5,7 +5,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from flask_login import UserMixin, logout_user, LoginManager, login_user, current_user, login_required
 from wtforms.validators import DataRequired, Email, EqualTo
-from app.forms import DeleteItemForm, RegistrationForm, LoginForm, forgotPassForm, changePassForm, updateForm, CreateItemForm
+from app.forms import DeleteItemForm, RegistrationForm, LoginForm, ViewCategoryForm, forgotPassForm, changePassForm, updateForm, CreateItemForm
 
 login_manager = LoginManager()
 login_manager.init_app(myobj)
@@ -139,9 +139,14 @@ def update_info():
 
 @myobj.route('/all_items', methods=['GET', 'POST'])
 def all_items():
-    items = Items.query.all()
+    form = ViewCategoryForm()
     categories = Category.query.all()
-    return render_template('all_items.html', items=items, categories=categories)
+    requested_category = request.args.get('category')
+    if (requested_category):
+        items = Items.query.filter(Items.categoryID == int(requested_category))
+        return render_template('all_items.html', items=items, categories=categories, form=form, selected_category=int(requested_category))
+    items = Items.query.all()
+    return render_template('all_items.html', items=items, categories=categories, form=form)
 
 
 @myobj.route('/i/<int:itemID>', methods=['GET', 'POST'])

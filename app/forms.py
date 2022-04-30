@@ -81,3 +81,26 @@ class CreateItemForm(FlaskForm):
 
 class DeleteItemForm(FlaskForm):
     delete = SubmitField('Delete Item')
+
+class ViewCategoryForm(FlaskForm):
+    category = SelectField('Category', 
+                           choices=[('0','Food'),
+                                    ('1','Books'),
+                                    ('2','Entertainment'),
+                                    ('3','Home Decor'),
+                                    ('4','Women\'s Clothing'),
+                                    ('5','Men\'s Clothing'),
+                                    ('6','Electronics'),
+                                    ('7','Kids'),
+                                    ('8','Toys'),
+                                    ('9','Beauty'),
+                                    ('10','Outdoors'),
+                                    ('11','Shoes'),
+                                    ('12','Storage'),
+                                    ('13','Kitchen'),
+                                    ('14','School & Office'),
+                                    ('15','Health'),
+                                    ('16','Household Needs'),
+                                    ('17','Misc & Others')], 
+                           validators=[DataRequired()])
+    submit = SubmitField('Display Items in Category')
