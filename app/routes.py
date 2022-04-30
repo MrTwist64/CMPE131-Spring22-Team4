@@ -5,7 +5,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from flask_login import UserMixin, logout_user, LoginManager, login_user, current_user, login_required
 from wtforms.validators import DataRequired, Email, EqualTo
-from app.forms import DeleteItemForm, RegistrationForm, LoginForm, ViewCategoryForm, forgotPassForm, changePassForm, updateForm, CreateItemForm
+from app.forms import DeleteItemForm, RegistrationForm, LoginForm, ViewCategoryForm, forgotPassForm, changePassForm, \
+    updateForm, CreateItemForm
 
 login_manager = LoginManager()
 login_manager.init_app(myobj)
@@ -41,7 +42,8 @@ def register():
         elif db.session.query(db.exists().where(User.username == form.username.data)).scalar():
             flash('Username already registered')
         else:
-            user = User(first_name=form.firstname.data, last_name=form.lastname.data, username=form.username.data, email=form.email.data, securityQuestion=form.securityQuestion.data)
+            user = User(first_name=form.firstname.data, last_name=form.lastname.data, username=form.username.data,
+                        email=form.email.data, securityQuestion=form.securityQuestion.data)
             user.set_password(form.password1.data)
             user.set_security_answer(form.securityQuestionAnswer.data)
             db.session.add(user)
@@ -63,15 +65,14 @@ def login():
     return render_template('login.html', form=form)
 
 
+# Used to validate email before allowing the user to change and printing their security question
 @myobj.route('/forgotPass', methods=['GET', 'POST'])
-def forgotPass():
+def forgot_pass():
     form = forgotPassForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user is not None:
-            session['email'] = form.email.data
-            form = changePassForm()
-
+            session['email'] = form.email.data  # session variable that allows for storing of email into a cookie
             return redirect(url_for('changePass'))
         else:
             flash('Invalid email address')
@@ -82,7 +83,7 @@ def forgotPass():
 @myobj.route('/changePass', methods=['GET', 'POST'])
 def changePass():
     form = changePassForm()
-    user = User.query.filter_by(email=session['email']).first()
+    user = User.query.filter_by(email=session['email']).first()  # uses session variable from forgotPass to verify
     if form.validate_on_submit():
         if user.check_security_answer(form.securityQuestionAnswer.data):
             user.set_password(form.password1.data)
@@ -91,7 +92,8 @@ def changePass():
             return redirect(url_for('index'))
         else:
             flash('Invalid answer')
-    return render_template('changePass.html', form=form, email=session['email'], securityQuestion=user.securityQuestion)
+    return render_template('change_pass.html', form=form, email=session['email'],
+                           securityQuestion=user.securityQuestion)
 
 
 @myobj.route("/logout")
@@ -144,7 +146,8 @@ def all_items():
     requested_category = request.args.get('category')
     if (requested_category):
         items = Items.query.filter(Items.categoryID == int(requested_category))
-        return render_template('all_items.html', items=items, categories=categories, form=form, selected_category=int(requested_category))
+        return render_template('all_items.html', items=items, categories=categories, form=form,
+                               selected_category=int(requested_category))
     items = Items.query.all()
     return render_template('all_items.html', items=items, categories=categories, form=form)
 
@@ -159,7 +162,8 @@ def view_item(itemID):
         return redirect(url_for("index"))
     category = Category.query.get(item.categoryID).category_name
     seller = User.query.get(item.sellerID)
-    return render_template('item.html', item=item, category=category, seller=seller, current_user=current_user, form=form)
+    return render_template('item.html', item=item, category=category, seller=seller, current_user=current_user,
+                           form=form)
 
 
 @myobj.route('/create_item', methods=['GET', 'POST'])

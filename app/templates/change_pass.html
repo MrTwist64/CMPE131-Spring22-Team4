@@ -1,3 +1,10 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Change Password
+{% endblock %}
+
+{% block content %}
 <h1> {{ email }}</h1>
 <h1><p> {{ securityQuestion }}</p></h1>
  <form action="" method="POST">
@@ -33,3 +40,4 @@
 {% for message in get_flashed_messages() %}
 <p>Error: {{message}} </p>
 {% endfor %}
+{% endblock %}
