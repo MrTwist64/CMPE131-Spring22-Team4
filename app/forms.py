@@ -86,7 +86,8 @@ class DeleteItemForm(FlaskForm):
 
 class ViewCategoryForm(FlaskForm):
     category = SelectField('Category',
-                           choices=[('0', 'Food'),
+                           choices=[('18', 'All Items'),
+                                    ('0', 'Food'),
                                     ('1', 'Books'),
                                     ('2', 'Entertainment'),
                                     ('3', 'Home Decor'),

@@ -145,6 +145,8 @@ def all_items():
     categories = Category.query.all()
     requested_category = request.args.get('category')
     if (requested_category):
+        if (requested_category == '18'):
+            return redirect(url_for('all_items'))
         items = Items.query.filter(Items.categoryID == int(requested_category))
         return render_template('all_items.html', items=items, categories=categories, form=form,
                                selected_category=int(requested_category))
