@@ -1,12 +1,13 @@
 from app import myobj, db
-from app.models import User, Category, Items, Cart
-from flask import flash, redirect, render_template, url_for, request, session
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, BooleanField
-from flask_login import UserMixin, logout_user, LoginManager, login_user, current_user, login_required
-from wtforms.validators import DataRequired, Email, EqualTo
 from app.forms import DeleteItemForm, RegistrationForm, LoginForm, ViewCategoryForm, forgotPassForm, changePassForm, \
     updateForm, CreateItemForm
+from app.models import User, Category, Items, Cart
+from flask import flash, redirect, render_template, url_for, request, session
+from flask_login import UserMixin, logout_user, LoginManager, login_user, current_user, login_required
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField, PasswordField, BooleanField
+from wtforms.validators import DataRequired, Email, EqualTo
+
 
 login_manager = LoginManager()
 login_manager.init_app(myobj)
@@ -22,6 +23,7 @@ def load_user(user_id):
     return User.query.filter_by(id=user_id).first()
 
 
+# -------------------- Routes --------------------
 @myobj.route('/', methods=['GET', 'POST'])
 @myobj.route('/index', methods=['GET', 'POST'])
 def index():
@@ -141,14 +143,26 @@ def update_info():
 
 @myobj.route('/all_items', methods=['GET', 'POST'])
 def all_items():
+    """ Displays all available items to the user, or only those of a specific category if requested.
+    If the item category is listed as 'all items', then the user is redirected to the all items view.
+
+    Parameters
+    -------------------
+    none
+
+    Returns
+    -------------------
+    string
+        HTML code for webpage to display
+    """
     form = ViewCategoryForm()
     categories = Category.query.all()
     requested_category = request.args.get('category')
     if (requested_category):
-        if (requested_category == '18'):
+        if (requested_category == '18'): # The category for viewing all items
             return redirect(url_for('all_items'))
         items = Items.query.filter(Items.categoryID == int(requested_category))
-        return render_template('all_items.html', items=items, categories=categories, form=form,
+        return render_template('all_items.html', items=items, categories=categories, form=form, 
                                selected_category=int(requested_category))
     items = Items.query.all()
     return render_template('all_items.html', items=items, categories=categories, form=form)
@@ -156,6 +170,18 @@ def all_items():
 
 @myobj.route('/i/<int:itemID>', methods=['GET', 'POST'])
 def view_item(itemID):
+    """ Displays an individual item to the user
+
+    Parameters
+    -------------------
+    itemID: int
+        The id for the item to display
+
+    Returns
+    -------------------
+    string
+        HTML code for webpage to display
+    """
     form = DeleteItemForm()
     item = Items.query.get(itemID)
     if (form.validate_on_submit()):
@@ -171,6 +197,18 @@ def view_item(itemID):
 @myobj.route('/create_item', methods=['GET', 'POST'])
 @login_required
 def create_item():
+    """ Allows the user to create an item to list on the webstore. 
+    Once the item is created, the user is redirected to the item page.
+
+    Parameters
+    -------------------
+    none
+
+    Returns
+    -------------------
+    string
+        HTML code for webpage to display
+    """
     form = CreateItemForm()
     if (form.validate_on_submit()):
         item = Items()
