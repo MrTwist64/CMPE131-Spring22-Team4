@@ -42,7 +42,7 @@
   3. Worked on Gantt Chart.
   4. Discussed timeline heading toward 2nd milestone.
 
-### 2022-05-01 at 4:00pm till 5:00pm
+### 2022-05-01 at 4:00pm till 5:30pm
 - Attended: Aaron, Ahn, Nhan
 - Meeting Location: Discord
 - Scheduled: Yes
