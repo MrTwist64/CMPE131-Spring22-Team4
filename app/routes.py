@@ -32,6 +32,17 @@ def index():
 
 @myobj.route('/register', methods=['GET', 'POST'])
 def register():
+    """ Renders the register page
+
+        Parameters
+        -------------------
+        None
+
+        Returns
+        -------------------
+        string
+            HTML code contained in register.html to display
+        """
     form = RegistrationForm()
     if form.validate_on_submit():
         if db.session.query(db.exists().where(User.email == form.email.data)).scalar():
@@ -51,6 +62,17 @@ def register():
 
 @myobj.route('/login', methods=['GET', 'POST'])
 def login():
+    """ Renders the login page
+
+        Parameters
+        -------------------
+        None
+
+        Returns
+        -------------------
+        string
+            HTML code contained in login.html to display
+        """
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -65,6 +87,17 @@ def login():
 # Used to validate email before allowing the user to change and printing their security question
 @myobj.route('/forgotPass', methods=['GET', 'POST'])
 def forgot_pass():
+    """ Renders the forgot password page
+
+        Parameters
+        -------------------
+        None
+
+        Returns
+        -------------------
+        string
+            HTML code contained in forgot_pass.html to display
+        """
     form = forgotPassForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -79,6 +112,17 @@ def forgot_pass():
 
 @myobj.route('/changePass', methods=['GET', 'POST'])
 def changePass():
+    """ Renders the change password page
+
+        Parameters
+        -------------------
+        None
+
+        Returns
+        -------------------
+        string
+            HTML code contained in change_pass.html to display
+        """
     form = changePassForm()
     user = User.query.filter_by(email=session['email']).first()  # uses session variable from forgotPass to verify
     if form.validate_on_submit():
@@ -96,6 +140,17 @@ def changePass():
 @myobj.route("/logout")
 @login_required
 def logout():
+    """ Logs out the current user
+
+        Parameters
+        -------------------
+        None
+
+        Returns
+        -------------------
+        response object
+            redirects to the route for index
+        """
     logout_user()
     return redirect(url_for('index'))
 
@@ -103,6 +158,17 @@ def logout():
 @myobj.route("/delete_user")
 @login_required
 def delete_user():
+    """ Deletes the current user
+
+            Parameters
+            -------------------
+            None
+
+            Returns
+            -------------------
+            response object
+                redirects to the route for index
+            """
     user = current_user
     db.session.delete(user)
     db.session.commit()
@@ -113,6 +179,17 @@ def delete_user():
 @myobj.route("/update_info", methods=['GET', 'POST'])
 @login_required
 def update_info():
+    """ Renders the update info page
+
+        Parameters
+        -------------------
+        None
+
+        Returns
+        -------------------
+        string
+            HTML code contained in update_info.html to display
+        """
     form = updateForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=current_user.email).first()
