@@ -41,3 +41,12 @@
   2. Reworked functional requirements.
   3. Worked on Gantt Chart.
   4. Discussed timeline heading toward 2nd milestone.
+
+### 2022-05-01 at 4:00pm till 5:00pm
+- Attended: Aaron, Ahn, Nhan
+- Meeting Location: Discord
+- Scheduled: Yes
+- Minutes:
+  1. Added mkdocs to project, with about, installation, and features pages
+  2. Discussed in-code documentation with docstring
+  3. Discussed timeline heading toward 2nd milestone.
