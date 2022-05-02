@@ -6,8 +6,8 @@
 2. :heavy_check_mark: Logout - Nhan
 3. :heavy_check_mark: Create New Account - Nhan
 4. :heavy_check_mark: Delete Account - Nhan
-5. :x: Update Account - Nhan
-6. :x: Forgot Password - Nhan
+5. :heavy_check_mark: Update Account - Nhan
+6. :heavy_check_mark: Forgot Password - Nhan
 7. :heavy_check_mark: Seller Create Item - Aaron
 8. :x: Seller Update Item - Aaron
 9. :heavy_check_mark: Seller Delete Item - Aaron
