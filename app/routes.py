@@ -30,11 +30,6 @@ def index():
     return render_template('index.html')
 
 
-@myobj.route('/about', methods=['GET', 'POST'])
-def about():
-    return render_template('about.html')
-
-
 @myobj.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
