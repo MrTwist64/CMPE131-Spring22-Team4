@@ -1,12 +1,13 @@
 from app import myobj, db
-from app.models import User, Category, Items, Cart
-from flask import flash, redirect, render_template, url_for, request, session
-from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, BooleanField
-from flask_login import UserMixin, logout_user, LoginManager, login_user, current_user, login_required
-from wtforms.validators import DataRequired, Email, EqualTo
 from app.forms import DeleteItemForm, RegistrationForm, LoginForm, ViewCategoryForm, forgotPassForm, changePassForm, \
     updateForm, CreateItemForm
+from app.models import User, Category, Items, Cart
+from flask import flash, redirect, render_template, url_for, request, session
+from flask_login import UserMixin, logout_user, LoginManager, login_user, current_user, login_required
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField, PasswordField, BooleanField
+from wtforms.validators import DataRequired, Email, EqualTo
+
 
 login_manager = LoginManager()
 login_manager.init_app(myobj)
@@ -22,30 +23,37 @@ def load_user(user_id):
     return User.query.filter_by(id=user_id).first()
 
 
+# -------------------- Routes --------------------
 @myobj.route('/', methods=['GET', 'POST'])
 @myobj.route('/index', methods=['GET', 'POST'])
 def index():
+    """ Renders the home index page
+
+    Parameters
+    -------------------
+    none
+
+    Returns
+    -------------------
+    string
+        HTML code contained in webpage to display
+    """
     return render_template('index.html')
-
-
-@myobj.route('/about', methods=['GET', 'POST'])
-def about():
-    return render_template('about.html')
 
 
 @myobj.route('/register', methods=['GET', 'POST'])
 def register():
     """ Renders the register page
 
-        Parameters
-        -------------------
-        None
+    Parameters
+    -------------------
+    None
 
-        Returns
-        -------------------
-        string
-            HTML code contained in register.html to display
-        """
+    Returns
+    -------------------
+    string
+        HTML code contained in register.html to display
+    """
     form = RegistrationForm()
     if form.validate_on_submit():
         if db.session.query(db.exists().where(User.email == form.email.data)).scalar():
@@ -67,15 +75,15 @@ def register():
 def login():
     """ Renders the login page
 
-        Parameters
-        -------------------
-        None
+    Parameters
+    -------------------
+    None
 
-        Returns
-        -------------------
-        string
-            HTML code contained in login.html to display
-        """
+    Returns
+    -------------------
+    string
+        HTML code contained in login.html to display
+    """
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -92,15 +100,15 @@ def login():
 def forgot_pass():
     """ Renders the forgot password page
 
-        Parameters
-        -------------------
-        None
+    Parameters
+    -------------------
+    None
 
-        Returns
-        -------------------
-        string
-            HTML code contained in forgot_pass.html to display
-        """
+    Returns
+    -------------------
+    string
+        HTML code contained in forgot_pass.html to display
+    """
     form = forgotPassForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -117,15 +125,15 @@ def forgot_pass():
 def changePass():
     """ Renders the change password page
 
-        Parameters
-        -------------------
-        None
+    Parameters
+    -------------------
+    None
 
-        Returns
-        -------------------
-        string
-            HTML code contained in change_pass.html to display
-        """
+    Returns
+    -------------------
+    string
+        HTML code contained in change_pass.html to display
+    """
     form = changePassForm()
     user = User.query.filter_by(email=session['email']).first()  # uses session variable from forgotPass to verify
     if form.validate_on_submit():
@@ -145,15 +153,15 @@ def changePass():
 def logout():
     """ Logs out the current user
 
-        Parameters
-        -------------------
-        None
+    Parameters
+    -------------------
+    None
 
-        Returns
-        -------------------
-        response object
-            redirects to the route for index
-        """
+    Returns
+    -------------------
+    response object
+        redirects to the route for index
+    """
     logout_user()
     return redirect(url_for('index'))
 
@@ -163,15 +171,15 @@ def logout():
 def delete_user():
     """ Deletes the current user
 
-            Parameters
-            -------------------
-            None
+    Parameters
+    -------------------
+    None
 
-            Returns
-            -------------------
-            response object
-                redirects to the route for index
-            """
+    Returns
+    -------------------
+    response object
+        redirects to the route for index
+    """
     user = current_user
     db.session.delete(user)
     db.session.commit()
@@ -184,15 +192,15 @@ def delete_user():
 def update_info():
     """ Renders the update info page
 
-        Parameters
-        -------------------
-        None
+    Parameters
+    -------------------
+    None
 
-        Returns
-        -------------------
-        string
-            HTML code contained in update_info.html to display
-        """
+    Returns
+    -------------------
+    string
+        HTML code contained in update_info.html to display
+    """
     form = updateForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=current_user.email).first()
@@ -218,14 +226,26 @@ def update_info():
 
 @myobj.route('/all_items', methods=['GET', 'POST'])
 def all_items():
+    """ Displays all available items to the user, or only those of a specific category if requested.
+    If the item category is listed as 'all items', then the user is redirected to the all items view.
+
+    Parameters
+    -------------------
+    none
+
+    Returns
+    -------------------
+    string
+        HTML code for webpage to display
+    """
     form = ViewCategoryForm()
     categories = Category.query.all()
     requested_category = request.args.get('category')
     if (requested_category):
-        if (requested_category == '18'):
+        if (requested_category == '18'): # The category for viewing all items
             return redirect(url_for('all_items'))
         items = Items.query.filter(Items.categoryID == int(requested_category))
-        return render_template('all_items.html', items=items, categories=categories, form=form,
+        return render_template('all_items.html', items=items, categories=categories, form=form, 
                                selected_category=int(requested_category))
     items = Items.query.all()
     return render_template('all_items.html', items=items, categories=categories, form=form)
@@ -233,6 +253,18 @@ def all_items():
 
 @myobj.route('/i/<int:itemID>', methods=['GET', 'POST'])
 def view_item(itemID):
+    """ Displays an individual item to the user
+
+    Parameters
+    -------------------
+    itemID: int
+        The id for the item to display
+
+    Returns
+    -------------------
+    string
+        HTML code for webpage to display
+    """
     form = DeleteItemForm()
     item = Items.query.get(itemID)
     if (form.validate_on_submit()):
@@ -248,6 +280,18 @@ def view_item(itemID):
 @myobj.route('/create_item', methods=['GET', 'POST'])
 @login_required
 def create_item():
+    """ Allows the user to create an item to list on the webstore. 
+    Once the item is created, the user is redirected to the item page.
+
+    Parameters
+    -------------------
+    none
+
+    Returns
+    -------------------
+    string
+        HTML code for webpage to display
+    """
     form = CreateItemForm()
     if (form.validate_on_submit()):
         item = Items()
