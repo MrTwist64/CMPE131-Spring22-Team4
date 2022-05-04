@@ -12,7 +12,7 @@ Register
     {{ form.hidden_tag() }}
      <h1 class="display-4 text-primary"> Register </h1>
      <div>
-         <label class="control-label">{{ form.firstname(class="rounded form-control",placeholder="example@email.com")}} </label>
+         <label class="control-label">{{ form.firstname(class="rounded form-control",placeholder="First")}} </label>
          {% for error in form.firstname.errors %}
          <p>{{ error }}</p>
          {% endfor %}
