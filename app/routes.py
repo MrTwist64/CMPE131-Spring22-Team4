@@ -43,7 +43,8 @@ def index():
 
 @myobj.route('/register', methods=['GET', 'POST'])
 def register():
-    """ Renders the register page
+    """ Renders the register page which prompts for first name, last name, email, password, security question, and
+    security answer
 
     Parameters
     -------------------
@@ -73,7 +74,7 @@ def register():
 
 @myobj.route('/login', methods=['GET', 'POST'])
 def login():
-    """ Renders the login page
+    """ Renders the login page which prompts for email and password
 
     Parameters
     -------------------
@@ -98,7 +99,8 @@ def login():
 # Used to validate email before allowing the user to change and printing their security question
 @myobj.route('/forgotPass', methods=['GET', 'POST'])
 def forgot_pass():
-    """ Renders the forgot password page
+    """ Renders the forgot password page which prompts the user to enter their email to find the correct
+    security question
 
     Parameters
     -------------------
@@ -123,7 +125,8 @@ def forgot_pass():
 
 @myobj.route('/changePass', methods=['GET', 'POST'])
 def changePass():
-    """ Renders the change password page
+    """ Renders the change password page which allows the user to change their password after entering a security
+    question
 
     Parameters
     -------------------
@@ -190,7 +193,8 @@ def delete_user():
 @myobj.route("/update_info", methods=['GET', 'POST'])
 @login_required
 def update_info():
-    """ Renders the update info page
+    """ Renders the update info page which allows the user to change their account information after confirming by
+    entering their email
 
     Parameters
     -------------------

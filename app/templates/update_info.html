@@ -31,13 +31,6 @@ Update Your Info
      </div>
      <br>
      <div>
-         {{ form.email(placeholder="E-mail")}}
-         {% for error in form.email.errors %}
-         <p>{{ error }}</p>
-         {% endfor %}
-     </div>
-     <br>
-     <div>
           {{ form.password1(placeholder="password")}}
           {% for error in form.password1.errors %}
           <p>{{ error }}</p>
@@ -63,6 +56,13 @@ Update Your Info
           {% for error in form.password2.errors %}
           <p>{{ error }}</p>
           {% endfor %}
+     </div>
+     <br>
+     <div>
+         {{ form.email(placeholder="E-mail")}}
+         {% for error in form.email.errors %}
+         <p>{{ error }}</p>
+         {% endfor %}
      </div>
      <br>
      <div>
