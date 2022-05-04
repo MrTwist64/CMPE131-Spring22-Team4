@@ -1,0 +1,7 @@
+site_name: Best Bay Documentation
+
+nav:
+    - 'index.md'
+    - 'installation.md'
+    - 'features.md'
+    - 'about.md'
