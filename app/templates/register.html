@@ -5,72 +5,75 @@ Register
 {% endblock %}
 
 {% block content %}
-<h1> Create an account! </h1>
+
+<br>
+<div class="form-group row justify-content-center">
  <form action="" method="POST">
     {{ form.hidden_tag() }}
+     <h1 class="display-4 text-primary"> Register </h1>
      <div>
-         {{ form.firstname(placeholder="First")}}
+         <label class="control-label">{{ form.firstname(class="rounded form-control",placeholder="example@email.com")}} </label>
          {% for error in form.firstname.errors %}
          <p>{{ error }}</p>
          {% endfor %}
      </div>
      <br>
      <div>
-         {{ form.lastname(placeholder="Last")}}
+         <label class="control-label"> {{ form.lastname(class="rounded form-control",placeholder="Last")}} </label>
          {% for error in form.username.errors %}
          <p>{{ error }}</p>
          {% endfor %}
      </div>
      <br>
      <div>
-         {{ form.username(placeholder="Username")}}
+         <label class="control-label"> {{ form.username(class="rounded form-control",placeholder="Username")}} </label>
          {% for error in form.username.errors %}
          <p>{{ error }}</p>
          {% endfor %}
      </div>
      <br>
      <div>
-         {{ form.email(placeholder="E-mail")}}
+         <label class="control-label"> {{ form.email(class="rounded form-control",placeholder="E-mail")}}</label>
          {% for error in form.email.errors %}
          <p>{{ error }}</p>
          {% endfor %}
      </div>
      <br>
      <div>
-          {{ form.password1(placeholder="password")}}
+         <label class="control-label">  {{ form.password1(class="rounded form-control",placeholder="password")}}</label>
           {% for error in form.password1.errors %}
           <p>{{ error }}</p>
           {% endfor %}
      </div>
      <br>
      <div>
-          {{ form.password2(placeholder="Confirm password")}}
+          <label class="control-label"> {{ form.password2(class="rounded form-control",placeholder="Confirm password")}}</label>
           {% for error in form.password2.errors %}
           <p>{{ error }}</p>
           {% endfor %}
      </div>
      <br>
      <div>
-          {{ form.securityQuestion(placeholder="Security Question")}}
+          <label class="control-label"> {{ form.securityQuestion(class="rounded form-control", placeholder="Security Question")}}</label>
           {% for error in form.securityQuestion.errors %}
           <p>{{ error }}</p>
           {% endfor %}
      </div>
      <br>
      <div>
-          {{ form.securityQuestionAnswer(placeholder="Answer")}}
+          <label class="control-label"> {{ form.securityQuestionAnswer(class="rounded form-control",placeholder="Answer")}}</label>
           {% for error in form.password2.errors %}
           <p>{{ error }}</p>
           {% endfor %}
      </div>
      <br>
      <div>
-          {{ form.submit() }}
+          {{ form.submit(class="btn btn-primary") }} <a class="btn btn-danger" href="login">Login instead</a>
      </div>
  </form>
+</div>
  <br>
 {% for message in get_flashed_messages() %}
 <p>Error: {{message}} </p>
 {% endfor %}
- <a href="login">Login instead</a>
 {% endblock %}

@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <base href="http://127.0.0.1:5000/">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"/>
+    </head>
+    <body>
+        <div id="header">
+            <h3>Best Bay</h3>
+            <div>
+            {% if current_user.is_anonymous %}
+            <p> Not Logged In! </p>
+            {% else %}
+            <a href="remove_user">Confirm Delete Account</a>
+            <br>
+            <br>
+            <br>
+            <a href="index">Go Home</a>
+            {% endif %}
+            </div>
+
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>
