@@ -17,4 +17,9 @@
         <p>{{ form.delete() }}</p>
     </form>
 {% endif %}
+
+<form action="i/{{item.itemID}}/cart" method="post">
+    <input type="submit" value="Add To Cart"/>
+</form>
+
 {% endblock %}
