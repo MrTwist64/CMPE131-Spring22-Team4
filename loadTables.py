@@ -6,8 +6,9 @@ db.drop_all()
 db.create_all()
 
 # insert rows for User table
-userTest = User(id=0, first_name='Testy', last_name='Test', username='testyTest', email='testy@gmail.com', password_hash='randomHash', securityQuestion='a', question_answer_hash= 'a')
+userTest = User(id=0, first_name='Testy', last_name='Test', username='testyTest', email='testy@gmail.com', password_hash='pbkdf2:sha256:260000$5E884898DA28047151D0E56F8DC6292773603D0D6AABBDD62A11EF721D1542D8', securityQuestion='a', question_answer_hash= 'a')
 
+guestUser = User(id =9999, first_name="Guest", last_name = None, username="Guest1", email=None)
 userTest2 = User(id=1, first_name='Taeyong', last_name='Lee', username='ty_xoxo', email='lty1995@neotech.com', password_hash='randomHash2')
 userTest3 = User(id=2, first_name='Johnny', last_name='Suh', username='johnnysuhlee', email='jjsuh@neotech.com', password_hash='randomHash3')
 userTest4 = User(id=3, first_name='Yuta', last_name='Nakamoto', username='tako_ya', email='naYu06@neotech.com', password_hash='randomHash4')
@@ -22,7 +23,8 @@ userTest12 = User(id=11, first_name='Gil', last_name='Brooks', username='gills17
 userTest13 = User(id=12, first_name='Holly', last_name='Poulton', username='mistletoad12', email='Holly_poulton532@nickia.com', password_hash='randomHash13')
 userTest14 = User(id=13, first_name='Alessia', last_name='Middleton', username='alleycaat0', email='alessia_Middleton1512@gmail.com', password_hash='randomHash14')
 
-db.session.add(userTest) 
+db.session.add(userTest)
+db.session.add(guestUser) 
 db.session.add(userTest2)
 db.session.add(userTest3) 
 db.session.add(userTest4)
@@ -137,7 +139,7 @@ itemsTest25 = Items(itemID=24, product_name='Turning Red - DVD', condition= 'Use
 itemsTest26 = Items(itemID=25, product_name='Shampoo', condition= 'New', description='Dove Shampoo', 
                   price=12, quantity=4, sellerID=5, categoryID=9)
 itemsTest27 = Items(itemID=26, product_name='Cargo Pants', condition= 'Used - Good', description='A midlength cargo pants for men - size XL', 
-                  price=20, quantity=4, sellerID=2, categoryID=5)
+                  price=20, quantity=4, sellerID=3, categoryID=5)
 
 db.session.add(itemsTest) 
 db.session.add(itemsTest2)
