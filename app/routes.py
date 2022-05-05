@@ -5,6 +5,7 @@ from app.models import User, Category, Items, Cart
 from flask import flash, redirect, render_template, url_for, request, session
 from flask_login import UserMixin, logout_user, LoginManager, login_user, current_user, login_required
 from flask_wtf import FlaskForm
+from flask_session import Session
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Email, EqualTo
 
@@ -310,3 +311,48 @@ def create_item():
         db.session.commit()
         return redirect(f'/i/{item.itemID}')
     return render_template('create_item.html', form=form)
+    
+    
+@myobj.route('/i/<int:itemID>/cart', methods=['GET', 'POST'])
+def addToCart(itemID):
+    """ Allows the user whether they are logged in or not to add an item to their cart.
+
+    Parameters
+    -------------------
+    itemID: int
+        The id for the item to add to the cart
+
+    Returns
+    -------------------
+    string
+        HTML code for webpage to display
+    """
+    
+    for c in Cart.query.all():
+    	db.session.delete(c)
+    db.session.commit()
+    
+    # the user is already logged into their account
+    if (current_user.is_authenticated):
+    	user = current_user
+    
+    # the user is not logged in, and will continue as guest
+    elif (current_user.is_anonymous):
+
+    	user = User.query.filter_by(first_name="Guest").first()    
+    
+    else:	
+    	return redirect(f'/i/{item.itemID}')
+    	
+    item = Items.query.get(itemID)
+    cartID = 0
+    
+    cart = Cart(cartID = cartID, id = user.id, itemID = itemID, quantity= item.quantity)
+    
+    db.session.add(cart)
+    db.session.commit()
+    
+    cartList = []
+    print(cartList)
+    return render_template('addCart.html', user=user, cartID=cartID, itemID=itemID, item=item, cart = cart)
+    
