@@ -174,6 +174,23 @@ def logout():
 def delete_user():
     """ Deletes the current user
 
+        Parameters
+        -------------------
+        None
+
+        Returns
+        -------------------
+        response object
+            redirects to the route for index
+        """
+    return render_template('delete_user.html')
+
+
+@myobj.route("/remove_user")
+@login_required
+def remove_user():
+    """ Deletes the current user
+
     Parameters
     -------------------
     None
