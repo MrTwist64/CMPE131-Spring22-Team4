@@ -8,21 +8,23 @@ db.create_all()
 # insert rows for User table
 userTest = User(id=0, first_name='Testy', last_name='Test', username='testyTest', email='testy@gmail.com', password_hash='pbkdf2:sha256:260000$5E884898DA28047151D0E56F8DC6292773603D0D6AABBDD62A11EF721D1542D8', securityQuestion='a', question_answer_hash= 'a')
 
-userTest2 = User(id=1, first_name='Taeyong', last_name='Lee', username='ty_xoxo', email='lty1995@neotech.com', password_hash='randomHash2')
-userTest3 = User(id=2, first_name='Johnny', last_name='Suh', username='johnnysuhlee', email='jjsuh@neotech.com', password_hash='randomHash3')
-userTest4 = User(id=3, first_name='Yuta', last_name='Nakamoto', username='tako_ya', email='naYu06@neotech.com', password_hash='randomHash4')
-userTest5 = User(id=4, first_name='Mark', last_name='Lee', username='onyour__mark', email='mmarkly99@neotech.com', password_hash='randomHash5')
-userTest6 = User(id=5, first_name='Sungchan', last_name='Jung', username='jschannie27', email='singsangsung_chan@neotech.com', password_hash='randomHash6')
-userTest7 = User(id=6, first_name='Doyoung', last_name='Kim', username='do0_ie', email='doyo982@neotech.com', password_hash='randomHash7')
-userTest8 = User(id=7, first_name='Yangyang', last_name='Liu', username='wooly_yang', email='blacksheep9023@neotech.com', password_hash='randomHash8')
-userTest9 = User(id=8, first_name='Kun', last_name='Qian', username='kuncloud1010', email='cloudy1011@neotech.com', password_hash='randomHash9')
-userTest10 = User(id=9, first_name='Oliver', last_name='Stuart', username='oliveStu389', email='oliver_stuart5843@info44.tech', password_hash='randomHash10')
-userTest11 = User(id=10, first_name='Roger', last_name='Hunt', username='rrrogerd', email='Roger_Hunt6249@gmal.com', password_hash='randomHash11')
-userTest12 = User(id=11, first_name='Gil', last_name='Brooks', username='gills17Fsh', email='Gil_Brooks5827@atink.com', password_hash='randomHash12')
-userTest13 = User(id=12, first_name='Holly', last_name='Poulton', username='mistletoad12', email='Holly_poulton532@nickia.com', password_hash='randomHash13')
-userTest14 = User(id=13, first_name='Alessia', last_name='Middleton', username='alleycaat0', email='alessia_Middleton1512@gmail.com', password_hash='randomHash14')
+guestUser = User(id =1, first_name="Guest", last_name = None, username="Guest1", email=None)
+userTest2 = User(id=2, first_name='Taeyong', last_name='Lee', username='ty_xoxo', email='lty1995@neotech.com', password_hash='randomHash2')
+userTest3 = User(id=3, first_name='Johnny', last_name='Suh', username='johnnysuhlee', email='jjsuh@neotech.com', password_hash='randomHash3')
+userTest4 = User(id=4, first_name='Yuta', last_name='Nakamoto', username='tako_ya', email='naYu06@neotech.com', password_hash='randomHash4')
+userTest5 = User(id=5, first_name='Mark', last_name='Lee', username='onyour__mark', email='mmarkly99@neotech.com', password_hash='randomHash5')
+userTest6 = User(id=6, first_name='Sungchan', last_name='Jung', username='jschannie27', email='singsangsung_chan@neotech.com', password_hash='randomHash6')
+userTest7 = User(id=7, first_name='Doyoung', last_name='Kim', username='do0_ie', email='doyo982@neotech.com', password_hash='randomHash7')
+userTest8 = User(id=8, first_name='Yangyang', last_name='Liu', username='wooly_yang', email='blacksheep9023@neotech.com', password_hash='randomHash8')
+userTest9 = User(id=9, first_name='Kun', last_name='Qian', username='kuncloud1010', email='cloudy1011@neotech.com', password_hash='randomHash9')
+userTest10 = User(id=10, first_name='Oliver', last_name='Stuart', username='oliveStu389', email='oliver_stuart5843@info44.tech', password_hash='randomHash10')
+userTest11 = User(id=111, first_name='Roger', last_name='Hunt', username='rrrogerd', email='Roger_Hunt6249@gmal.com', password_hash='randomHash11')
+userTest12 = User(id=12, first_name='Gil', last_name='Brooks', username='gills17Fsh', email='Gil_Brooks5827@atink.com', password_hash='randomHash12')
+userTest13 = User(id=13, first_name='Holly', last_name='Poulton', username='mistletoad12', email='Holly_poulton532@nickia.com', password_hash='randomHash13')
+userTest14 = User(id=14, first_name='Alessia', last_name='Middleton', username='alleycaat0', email='alessia_Middleton1512@gmail.com', password_hash='randomHash14')
 
-db.session.add(userTest) 
+db.session.add(userTest)
+db.session.add(guestUser) 
 db.session.add(userTest2)
 db.session.add(userTest3) 
 db.session.add(userTest4)
@@ -131,13 +133,13 @@ itemsTest22 = Items(itemID=21, product_name='Apple Sauce', condition= 'New', des
 itemsTest23 = Items(itemID=22, product_name='Salmon Filet', condition= 'New', description='A salmon cut packaged with ice', 
                   price=15, quantity=4, sellerID=8, categoryID=0)
 itemsTest24 = Items(itemID=23, product_name='Roses', condition= 'New', description='Florist quality rose bouquet', 
-                  price=12, quantity=4, sellerID=1, categoryID=10)
+                  price=12, quantity=4, sellerID=2, categoryID=10)
 itemsTest25 = Items(itemID=24, product_name='Turning Red - DVD', condition= 'Used - Acceptable', description="Disney and Pixar's hit movie of 2022 - Turning Red", 
                   price=20, quantity=4, sellerID=8, categoryID=2)
 itemsTest26 = Items(itemID=25, product_name='Shampoo', condition= 'New', description='Dove Shampoo', 
                   price=12, quantity=4, sellerID=5, categoryID=9)
 itemsTest27 = Items(itemID=26, product_name='Cargo Pants', condition= 'Used - Good', description='A midlength cargo pants for men - size XL', 
-                  price=20, quantity=4, sellerID=2, categoryID=5)
+                  price=20, quantity=4, sellerID=3, categoryID=5)
 
 db.session.add(itemsTest) 
 db.session.add(itemsTest2)
