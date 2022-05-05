@@ -1,3 +1,42 @@
 table, th, td {
     border: 1px solid black;
   }
+
+.form-control:focus {
+        border-color: #28a745;
+        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.form-control:focus {
+   box-shadow:none;
+}
+
+body {
+    background-color: #f0f2f4;
+}
+
+.navbar-custom {
+    background-color: #0046be;
+}
+
+.navbar-custom .navbar-brand {
+    color: #FFED31;
+}
+.navbar-custom .navbar-text {
+    color: white;
+}
+
+.navbar-customclass .navbar-nav .nav-link {
+    color: white;
+}
+
+/* navigation links anchor hover and active styles */
+.navbar-customclass .nav-item.active .nav-link,
+.navbar-customclass .nav-item:hover .nav-link {
+    color: #FFED31;
+}
+
+.form-control:focus {
+        border-color: #FFED31;
+        box-shadow: 0 0 0 0.2rem #FFED31;
+    }
