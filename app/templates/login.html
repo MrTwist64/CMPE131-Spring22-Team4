@@ -5,19 +5,21 @@ Login
 {% endblock %}
 
 {% block content %}
-<h1><a href="register">Register!</a></h1>
+<div class="form-group row justify-content-center">
 <form action="" method="POST">
 
     {{ form.hidden_tag() }}
+    <h1 class="display-4 text-primary"> Login </h1>
+    <br>
     <div>
-        {{ form.email(placeholder="E-mail")}}
+        <label class="control-label">{{ form.email(class="rounded form-control",placeholder="E-mail")}} </label>
         {% for error in form.email.errors %}
         <p>{{ error }}</p>
         {% endfor %}
     </div>
     <br>
     <div>
-         {{ form.password(placeholder="password")}}
+        <label class="control-label">{{ form.password(class="rounded form-control",placeholder="password")}} </label>
          {% for error in form.password.errors %}
          <p>{{ error }}</p>
          {% endfor %}
@@ -25,10 +27,11 @@ Login
     <p>{{ form.remember() }} {{ form.remember.label }}</p>
     <br>
     <p>
-         {{ form.submit() }}
+         {{ form.submit(class="btn btn-primary") }} <a class="btn btn-danger" href="login">Register instead</a>
     </p>
 
 </form>
+</div>
 <br>
 {% for message in get_flashed_messages() %}
 <p>Error: {{message}} </p>

@@ -1,24 +1,81 @@
 # Features
 This is a features documentation for our user guide.
 
-## Login
-You can login to our site by clicking on the Login page in the upper right corner. Then type in your email address and password. Click the remember me checkbox if you want the site to remember that you are logged in. After putting in your username, password, and checking the remember me box, then click the submit button to log into your account. 
+## routes.login()
+Allows the user to login after entering their email and password.
 
-## Logout
-You can logout by clicking the logout button on the top of the tab. 
-	
-## Create New Account
-Users can create a new account in our store site by adding their first name, last name, username, email, and password. It would then create an account in which users have the option to buy and sell items in our store site.
+#### Parameters
+- none
 
-## Delete Account
-User can delete their existing account. The user will have to be first logged into their account. Then logged in users can simply click the "Delete Account" link located near the upper right corner of the site under the welcome message to delete their account from our site. 
+#### Returns
+- string: HTML code for webpage to display
+
+## routes.logout()
+While a user is logged in, after clicking the logout button, the current user is logged out.
 	
-## Update Account
-Users can update their information in their account if they so wish. First users would have to click on the "Update Info" link on the top right corner of the page right below the Welcome user message. Then the user will enter a page to update their either first name, last name, username, email, or password. The user will have to confirm their email address again for the system to update account information. Any other information left blank will not be updated.
+#### Parameters
+- none
+
+#### Returns
+- response object: redirects user to the homepage
+
+## routes.register()
+Allows user to register a new account to be stored in the database.
 	
-## Forgot Password
-If users cannot log in because they forgot their password, then they can create a new password by first typing in their email address. The site will then show the user's security question and prompt the user that matches with the email address to first answer the security question, and then type in their new password. The user will also have to verify that new password. Once the user has added their password twice, the system will update the new password credential for the user.
+#### Parameters
+- none
+
+#### Returns
+- string :HTML code contained in register.html to display
+
+## routes.delete_user()
+displays webpage confirming if the user wants to delete their account
 	
+#### Parameters
+- none
+
+#### Returns
+- string: HTML code for webpage to display
+
+## routes.remove_users()
+Deletes the user from the database
+	
+#### Parameters
+- none
+
+#### Returns
+- response object: redirects to the route for index
+	
+## routes.update_user()
+Renders the update info page which allows the user to change their account information after confirming by
+    entering their email
+	
+#### Parameters
+- none
+
+#### Returns
+- string: HTML code for webpage to display
+
+## routes.forgot_pass()
+Renders the forgot password page which prompts the user to enter their email to find the correct
+    security question
+	
+#### Parameters
+- none
+
+#### Returns
+ string: HTML code for webpage to display
+
+## routes.change_pass()
+Renders the change password page which allows the user to change their password after entering a security
+    question
+	
+#### Parameters
+- none
+
+#### Returns
+- string: HTML code for webpage to display
+
 ## routes.create_item()
 Allows the user to create an item to list on the webstore. Once the item is created, the user is redirected to the item page.
 
