@@ -9,7 +9,6 @@ This project is build upon flask, which can be installed using pip.
 pip install flask
 pip install flask-wtf flask-sqlalchemy flask-login
 pip install email_validator
-pip install Flask-Session
 pip install flask-bootstrap
 ```
 
