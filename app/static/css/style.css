@@ -40,3 +40,22 @@ body {
         border-color: #FFED31;
         box-shadow: 0 0 0 0.2rem #FFED31;
     }
+
+.bg {
+  /* The image used */
+  background-image: url(https://wallpapercave.com/wp/wp8063327.jpg);
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@import url("http://fonts.googleapis.com/css?family=Oswald:400,300,700");
+
+#index_heading {
+      font-family: 'Oswald', sans-serif !important;
+}
