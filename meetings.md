@@ -62,7 +62,7 @@
 
 ### 2022-05-06 at 1:00pm till 1:10pm
 - Attended: Aaron, Anh, Nhan
-- Meeting Location: In-Class
+- Meeting Location: Discord
 - Scheduled: Yes
 - Minutes:
   1. Submitted MVP assignment.
