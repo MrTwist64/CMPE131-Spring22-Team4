@@ -346,30 +346,30 @@ def addToCart(itemID):
     """
     
     for c in Cart.query.all():
-    	db.session.delete(c)
+        db.session.delete(c)
     db.session.commit()
     
     # the user is already logged into their account
     if (current_user.is_authenticated):
-    	user = current_user
+        user = current_user
     
     # the user is not logged in, and will continue as guest
     elif (current_user.is_anonymous):
 
-    	user = User.query.filter_by(first_name="Guest").first()    
-    
+        user = User.query.filter_by(first_name="Guest").first()    
+
     else:	
-    	return redirect(f'/i/{item.itemID}')
+        return redirect(f'/i/{item.itemID}')
     	
     item = Items.query.get(itemID)
     cartID = 0
     
-    cart = Cart(cartID = cartID, id = user.id, itemID = itemID, quantity= item.quantity)
+    cart = Cart(cartID = cartID, userID = user.id, itemID = itemID, quantity= item.quantity)
     
     db.session.add(cart)
     db.session.commit()
     
     cartList = []
     print(cartList)
-    return render_template('addCart.html', user=user, cartID=cartID, itemID=itemID, item=item, cart = cart)
+    return render_template('addCart.html', user=user, cartID=cartID, itemID=itemID, item=item, cart=cart)
     
