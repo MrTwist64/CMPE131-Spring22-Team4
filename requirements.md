@@ -14,10 +14,11 @@
 10. :heavy_check_mark: View Available Items - Aaron
 11. :heavy_check_mark: View Single Item - Aaron
 12. :x: Add Item to Cart - Anh
-13. :x: Remove Item From Cart - Anh
-14. :x: Buy Items From Cart - Anh
-15. :x: Maintain UI Consistency - Nhan
-16. :x: (HP) Add Pictures To Items - TBD
+13. :x: View Current Cart - Aaron
+14. :x: Remove Item From Cart - Anh
+15. :x: Buy Items From Cart - Anh
+16. :x: Maintain UI Consistency - Nhan
+17. :x: (HP) Add Pictures To Items - TBD
 
 ### Medium Priority
 17. :heavy_check_mark: (HP) Add Item Categories
