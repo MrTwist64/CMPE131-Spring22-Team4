@@ -345,10 +345,6 @@ def addToCart(itemID):
         HTML code for webpage to display
     """
     
-    for c in Cart.query.all():
-    	db.session.delete(c)
-    db.session.commit()
-    
     # the user is already logged into their account
     if (current_user.is_authenticated):
     	user = current_user
@@ -369,7 +365,5 @@ def addToCart(itemID):
     db.session.add(cart)
     db.session.commit()
     
-    cartList = []
-    print(cartList)
     return render_template('addCart.html', user=user, cartID=cartID, itemID=itemID, item=item, cart = cart)
     
