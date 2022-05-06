@@ -54,6 +54,20 @@ body {
   background-size: cover;
 }
 
+.parallax {
+  /* The image used */
+  background-image: url(https://wallpapercave.com/wp/wp8063327.jpg);
+
+  /* Set a specific height */
+  min-height: 500px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 @import url("http://fonts.googleapis.com/css?family=Oswald:400,300,700");
 
 #index_heading {
