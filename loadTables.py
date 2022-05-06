@@ -83,7 +83,7 @@ db.session.add(categoryTest18)
 db.session.commit()
 
 
-# inserting schemas for Items table
+# inserting rows for Items table
 itemsTest = Items(itemID=0, product_name='Ketchup', condition= 'New', description='Made from quality tomatoes', 
                   price=5, quantity=4, sellerID=0, categoryID=0)
 
@@ -170,7 +170,8 @@ db.session.add(itemsTest26)
 db.session.add(itemsTest27)
 db.session.commit()
 
-# test expected input from database tables
+
+# test output from database tables
 users = User.query.all()
 for u in users:
 	print(u.id, u.username)
