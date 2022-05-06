@@ -5,6 +5,7 @@ Available Items
 {% endblock %}
 
 {% block content %}
+<div class ="parallax">
 {% if selected_category %}
 <h1>Items - {{categories[selected_category].category_name}}</h1>
 {% else %}
@@ -13,7 +14,7 @@ Available Items
 <form action="" method="GET">
     <p>{{ form.category() }} {{ form.submit() }}</p>
 </form>
-{% for item in items %}
+{% for item in items %now t
 <div>
 <table>
     <thead>
@@ -35,4 +36,5 @@ Available Items
 </div>
 <br/>
 {% endfor %}
+</div>
 {% endblock %}
