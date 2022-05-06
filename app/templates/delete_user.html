@@ -12,19 +12,29 @@ Confirm Delete
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"/>
     </head>
     <body>
-        <div id="header">
-            <h3>Best Bay</h3>
+        <div id="header" class="container">
+            <h1 class="display-4 text-primary text-center"> Are you sure you want to delete? :( </h1>
             <div>
             {% if current_user.is_anonymous %}
             <p> Not Logged In! </p>
             {% else %}
-            <a href="remove_user">Confirm Delete Account</a>
-            <br>
-            <br>
-            <br>
-            <a href="index">Go Home</a>
-            {% endif %}
+                <div class="row top5">
+                    <div class="col text-center">
+                        <a href="remove_user" class="btn btn-danger btn-lg active text-center" role="button" aria-pressed="true">Confirm Delete Account</a>
+                    </div>
+                <br>
+                <br>
+                <br>
+                </div>
+                <div class="row top5">
+                    <div class="col text-center">
+                        <a href="remove_user" class="btn btn-primary btn-lg active text-center" role="button" aria-pressed="true">Cancel</a>
+                    </div>
+                    {% endif %}
+                </div>
+
             </div>
+        </div>
             {% endblock %}
         </div>
     </body>
