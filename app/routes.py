@@ -373,3 +373,25 @@ def addToCart(itemID):
     print(cartList)
     return render_template('addCart.html', user=user, cartID=cartID, itemID=itemID, item=item, cart=cart)
     
+
+@myobj.route('/cart', methods=['GET', 'POST'])
+def view_cart():
+    """ Displays a users cart by showing each item individually.
+
+    Parameters
+    -------------------
+    none
+
+    Returns
+    -------------------
+    string
+        HTML code for webpage to display
+    """
+    cartItems = Cart.query.filter(Cart.userID == current_user.id)
+    items = []
+    subtotal = 0
+    for cartItem in cartItems:
+        item = Items.query.get(cartItem.itemID)
+        items.append(item)
+        subtotal += item.price * cartItem.quantity
+    return render_template('view_cart.html', currentUser=current_user, cartItems=cartItems, items=items, subtotal=subtotal)
