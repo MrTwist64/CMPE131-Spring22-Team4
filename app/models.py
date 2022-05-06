@@ -56,7 +56,7 @@ class Items(db.Model):
 
 class Cart(db.Model):
     cartID = db.Column(db.Integer, primary_key=True)
-    id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'))
+    userID = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'))
     itemID = db.Column(db.Integer, db.ForeignKey('items.itemID', ondelete='CASCADE'))
     quantity = db.Column(db.Integer, nullable= False)
     createdAt = db.Column(db.DateTime, server_default=func.now())
@@ -67,5 +67,5 @@ class Cart(db.Model):
     CheckConstraint('quantity > 0', name='quantity_not_negative_check')
     CheckConstraint('quantity > 0', name='modifiedAt_not_earlier_check')
     def __repr__(self):
-        return '<Cart {} {} {} {}>'.format(self.cartID, self.id, self.itemID, self.quantity)
+        return '<Cart {} {} {} {}>'.format(self.cartID, self.userID, self.itemID, self.quantity)
 
