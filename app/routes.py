@@ -358,12 +358,12 @@ def addToCart(itemID):
     	return redirect(f'/i/{item.itemID}')
     	
     item = Items.query.get(itemID)
-    cartID = 0
     
-    cart = Cart(cartID = cartID, id = user.id, itemID = itemID, quantity= item.quantity)
+    # default quantity added to cart is one item
+    cart = Cart(id = user.id, itemID = itemID, quantity= 1)
     
     db.session.add(cart)
     db.session.commit()
     
-    return render_template('addCart.html', user=user, cartID=cartID, itemID=itemID, item=item, cart = cart)
+    return render_template('addCart.html', user=user, itemID=itemID, item=item, cart=cart)
     
