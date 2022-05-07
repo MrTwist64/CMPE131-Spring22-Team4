@@ -2,6 +2,8 @@ from app import db
 
 from sqlalchemy import CheckConstraint
 from sqlalchemy import UniqueConstraint
+from sqlalchemy.exc import IntegrityError
+
 from sqlalchemy.sql import func
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin

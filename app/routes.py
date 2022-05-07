@@ -8,7 +8,8 @@ from flask_wtf import FlaskForm
 from flask_session import Session
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Email, EqualTo
-
+from sqlalchemy.exc import IntegrityError
+from sqlalchemy import and_
 
 login_manager = LoginManager()
 login_manager.init_app(myobj)
@@ -359,11 +360,19 @@ def addToCart(itemID):
     	
     item = Items.query.get(itemID)
     
-    # default quantity added to cart is one item
-    cart = Cart(id = user.id, itemID = itemID, quantity= 1)
     
-    db.session.add(cart)
-    db.session.commit()
+    try:
+    	# default quantity added to cart is one item
+    	cart = Cart(id = user.id, itemID = itemID, quantity= 1)
     
+    	db.session.add(cart)
+    	db.session.commit()
+    
+    # Unique constraint error when user adds same item in cart
+    except IntegrityError:
+    	db.session.rollback()
+    	
+    	flash("You have already added this item into your cart.")
+    	
     return render_template('addCart.html', user=user, itemID=itemID, item=item, cart=cart)
-    
+    	
