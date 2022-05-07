@@ -29,6 +29,9 @@ Available Items
                 Quantity: {{item.quantity}} <br/>
                 Category: {{categories[item.categoryID].category_name}} <br/>
                 Description: {{item.description}}
+                <form action="i/{{item.itemID}}/cart" method="post">
+    			<input type="submit" value="Add To Cart"/>
+		</form>
             </td>
         </tr>
     </tbody>

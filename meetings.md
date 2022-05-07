@@ -59,3 +59,10 @@
 - Minutes:
   1. Discussed cart implementation.
   2. Programmed individually on cart functional requirements.
+
+### 2022-05-06 at 1:00pm till 1:10pm
+- Attended: Aaron, Anh, Nhan
+- Meeting Location: Discord
+- Scheduled: Yes
+- Minutes:
+  1. Submitted MVP assignment.
