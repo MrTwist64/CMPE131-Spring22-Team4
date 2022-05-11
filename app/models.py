@@ -65,9 +65,7 @@ class Cart(db.Model):
     createdAt = db.Column(db.DateTime, default=func.now())
     modifiedAt = db.Column(db.DateTime, onupdate=func.now())
     
-    __table_args__ = (
-    db.UniqueConstraint(id, itemID),
-)
+    __table_args__ = (db.UniqueConstraint(userID, itemID),)
     
     CheckConstraint('quantity > 0', name='quantity_not_negative_check')
     CheckConstraint('quantity > 0', name='modifiedAt_not_earlier_check')

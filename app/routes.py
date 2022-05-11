@@ -355,29 +355,30 @@ def addToCart(itemID):
 
         user = User.query.filter_by(first_name="Guest").first()    
 
-    else:	
+    else:    
         return redirect(f'/i/{item.itemID}')
-    	
+        
     item = Items.query.get(itemID)
     
     
     try:
-    	# default quantity added to cart is one item
-    	cart = Cart(id = user.id, itemID = itemID, quantity= 1)
+        # default quantity added to cart is one item
+        cart = Cart(userID = user.id, itemID = itemID, quantity= 1)
     
-    db.session.add(cart)
-    db.session.commit()
+        db.session.add(cart)
+        db.session.commit()
     
     # Unique constraint error when user adds same item in cart
     except IntegrityError:
-    	db.session.rollback()
-    	
-    	flash("You have already added this item into your cart.")
-    	
+        db.session.rollback()
+        
+        flash("You have already added this item into your cart.")
+        
     return render_template('addCart.html', user=user, itemID=itemID, item=item, cart=cart)
     
 
 @myobj.route('/cart', methods=['GET', 'POST'])
+@login_required
 def view_cart():
     """ Displays a users cart by showing each item individually.
 
