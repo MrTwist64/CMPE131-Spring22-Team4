@@ -8,7 +8,8 @@ from flask_wtf import FlaskForm
 from flask_session import Session
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Email, EqualTo
-
+from sqlalchemy.exc import IntegrityError
+from sqlalchemy import and_
 
 login_manager = LoginManager()
 login_manager.init_app(myobj)
@@ -345,10 +346,6 @@ def addToCart(itemID):
         HTML code for webpage to display
     """
     
-    for c in Cart.query.all():
-        db.session.delete(c)
-    db.session.commit()
-    
     # the user is already logged into their account
     if (current_user.is_authenticated):
         user = current_user
@@ -362,16 +359,22 @@ def addToCart(itemID):
         return redirect(f'/i/{item.itemID}')
     	
     item = Items.query.get(itemID)
-    cartID = 0
     
-    cart = Cart(cartID = cartID, userID = user.id, itemID = itemID, quantity= item.quantity)
+    
+    try:
+    	# default quantity added to cart is one item
+    	cart = Cart(id = user.id, itemID = itemID, quantity= 1)
     
     db.session.add(cart)
     db.session.commit()
     
-    cartList = []
-    print(cartList)
-    return render_template('addCart.html', user=user, cartID=cartID, itemID=itemID, item=item, cart=cart)
+    # Unique constraint error when user adds same item in cart
+    except IntegrityError:
+    	db.session.rollback()
+    	
+    	flash("You have already added this item into your cart.")
+    	
+    return render_template('addCart.html', user=user, itemID=itemID, item=item, cart=cart)
     
 
 @myobj.route('/cart', methods=['GET', 'POST'])

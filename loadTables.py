@@ -1,5 +1,5 @@
 from app import db
-from app.models import User, Category, Items
+from app.models import User, Category, Items, Cart
 
 db.drop_all()
 
@@ -83,7 +83,7 @@ db.session.add(categoryTest18)
 db.session.commit()
 
 
-# inserting schemas for Items table
+# inserting rows for Items table
 itemsTest = Items(itemID=0, product_name='Ketchup', condition= 'New', description='Made from quality tomatoes', 
                   price=5, quantity=4, sellerID=0, categoryID=0)
 
@@ -170,7 +170,20 @@ db.session.add(itemsTest26)
 db.session.add(itemsTest27)
 db.session.commit()
 
-# test expected input from database tables
+
+# create test Cart items
+testCart = Cart(cartID = 0, id = 1, itemID = 0, quantity = 1, createdAt=None, modifiedAt=None)
+testCart2 = Cart(cartID = 2, id= 2, itemID = 0, quantity = 1, createdAt=None, modifiedAt=None)
+
+testCart3 = Cart(cartID=3, id=2, itemID=0, quantity=1, createdAt=None, modifiedAt=None)
+
+db.session.add(testCart)
+db.session.add(testCart2)
+db.session.add(testCart3)
+
+db.session.commit()
+
+# test output from database tables
 users = User.query.all()
 for u in users:
 	print(u.id, u.username)

@@ -112,3 +112,12 @@ Displays an individual item to the user
 #### User Description
 Any user regardless of logged in status or not can also click on an item to view the information about that particular item. The user would have to click on "All Items" to bring up a page that show all the avaialble items and then click on the name of the product in order to view that single item and see any additional information and pictures of the item. <br/><br/>
 If the user is the one who is selling the item, the user can click on the particular item they wish to delete a listing of and clicks on "Delete Item" button to delete the item from store.
+
+## routes.addCart(itemID)
+Allows logged in user or a guest user to add an item to a cart. It does not allow for the a user to add the same item to their cart multiple times.
+
+#### Parameters:
+- itemID (int): id for the item to add to the cart
+
+#### Returns
+- string: HTML code for webpage to display cart information just added
