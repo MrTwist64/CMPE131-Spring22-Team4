@@ -66,3 +66,11 @@
 - Scheduled: Yes
 - Minutes:
   1. Submitted MVP assignment.
+
+### 2022-05-10 at 5:00pm till 5:45pm
+- Attended: Aaron, Anh
+- Meeting Location: In-Class
+- Scheduled: No
+- Minutes:
+  1. Discussed cart implementation
+  2. Programmed individually on cart functional requirements.
