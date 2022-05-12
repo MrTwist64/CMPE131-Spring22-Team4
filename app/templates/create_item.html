@@ -5,35 +5,34 @@ Create Item
 {% endblock %}
 
 {% block content %}
+<div class="form-group row justify-content-center parallax">
 <form action="" method="POST">
+    <h1 class="display-4 text-primary"> Create an item </h1>
     {{form.hidden_tag()}}
     <p>
-        {{ form.product_name.label }}
-        {{ form.product_name }}
+        <label class="control-label">  {{ form.product_name(class="rounded form-control",placeholder="Name")}}</label>
     </p>
     <p>
-        {{ form.description.label }}
-        {{ form.description }}
+         <label class="control-label">  {{ form.description(class="rounded form-control",placeholder="Description")}}</label>
     </p>
     <p>
-        {{ form.price.label }}
-        {{ form.price }}
+        <label class="control-label">  {{ form.price(class="rounded form-control",placeholder="Price")}}</label>
     </p>
     <p>
-        {{ form.quantity.label }}
-        {{ form.quantity }}
+        <label class="control-label">  {{ form.quantity(class="rounded form-control",placeholder="Quantity")}}</label>
     </p>
     <p>
         {{ form.condition.label }}
-        {{ form.condition }}
+        <label class="control-label">  {{ form.condition(class="btn btn-light dropdown-toggle",placeholder="Condition")}}</label>
     </p>
     <p>
         {{ form.category.label }}
-        {{ form.category }}
+        <label class="control-label">  {{ form.category(class="btn btn-light dropdown-toggle",placeholder="Category")}}</label>
+
     </p>
     <p>
-        {{ form.submit() }}
+        {{ form.submit(class="btn btn-primary") }}
     </p>
 </form>
-
+</div>
 {% endblock %}

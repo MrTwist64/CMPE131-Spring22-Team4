@@ -5,12 +5,14 @@ Forgot Password
 {% endblock %}
 
 {% block content %}
-<h1> Enter your email </h1>
 <h1><p> {{ securityQuestion }}</p></h1>
+<div class="form-group row justify-content-center parallax">
  <form action="" method="POST">
     {{ form.hidden_tag() }}
+     <h1 class="display-4 text-primary"> Recovery </h1>
+     <br>
       <div>
-         {{ form.email(placeholder="E-mail")}}
+              <label class="control-label"> {{ form.email(class="rounded form-control",placeholder="E-mail")}}</label>
          {% for error in form.email.errors %}
          <p>{{ error }}</p>
          {% endfor %}
@@ -18,11 +20,12 @@ Forgot Password
 
      <br>
      <br>
-     <div>
-         {{ form.submit() }}
+     <div class="justify-content-center">
+         {{ form.submit(class="btn btn-primary") }} <a class="btn btn-danger" href="index">Cancel</a>
      </div>
 
  </form>
+</div>
 {% for message in get_flashed_messages() %}
 <p>Error: {{message}} </p>
 {% endfor %}
