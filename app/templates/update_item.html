@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Update Item
+{% endblock %}
+
+{% block content %}
+<div class="form-group row justify-content-center parallax">
+    <form action="" method="POST">
+        <h1 class="display-4 text-primary"> Update Item </h1>
+        {{form.hidden_tag()}}
+        <p>
+            <label class="control-label">  {{ form.product_name(class="rounded form-control",placeholder="Name",value=item.product_name)}}</label>
+        </p>
+        <p>
+             <label class="control-label">  {{ form.description(class="rounded form-control",placeholder="Description",value=item.description)}}</label>
+        </p>
+        <p>
+            <label class="control-label">  {{ form.price(class="rounded form-control",placeholder="Price",value=item.price)}}</label>
+        </p>
+        <p>
+            <label class="control-label">  {{ form.quantity(class="rounded form-control",placeholder="Quantity",value=item.quantity)}}</label>
+        </p>
+        <p>
+            {{ form.condition.label }}
+            <label class="control-label">  {{ form.condition(class="btn btn-light dropdown-toggle",placeholder="Condition",value=item.condition)}}</label>
+        </p>
+        <p>
+            {{ form.category.label }}
+            <label class="control-label">  {{ form.category(class="btn btn-light dropdown-toggle",placeholder="Category",value=item.categoryID)}}</label>
+        </p>
+        <p>
+            {{ form.submit(class="btn btn-primary", placeholder="Test") }}
+        </p>
+    </form>
+</div>
+
+{% for message in get_flashed_messages() %}
+<p>Error: {{message}} </p>
+{% endfor %}
+{% endblock %}
