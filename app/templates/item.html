@@ -12,9 +12,12 @@
 <p>Seller: {{seller.username}}</p>
 <p>Description: {{item.description}}</p>
 {% if seller.id == current_user.id %}
+    <form action="i/{{item.itemID}}/update" method="post">
+        <input type="submit" value="Update Item"/>
+    </form>
     <form action="" method="POST">
-        {{ form.hidden_tag() }}
-        <p>{{ form.delete() }}</p>
+        {{ delete_form.hidden_tag() }}
+        <p>{{ delete_form.delete() }}</p>
     </form>
 {% endif %}
 
