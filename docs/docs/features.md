@@ -132,7 +132,7 @@ Displays a users cart by showing each item individually.
 - string: HTML code for webpage to display the current user's cart.
 
 ## routes.update_item()
-Allows a seller to edit their own item.
+Allows a seller to edit their own item. Reuses the create item form, which allows the user to input new values for the item.
 
 #### Parameters:
 - itemID (int): id for the item to update.
