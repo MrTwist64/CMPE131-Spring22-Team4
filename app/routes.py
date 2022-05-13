@@ -348,31 +348,54 @@ def addToCart(itemID):
     
     # the user is already logged into their account
     if (current_user.is_authenticated):
-    	user = current_user
+        user = current_user
     
     # the user is not logged in, and will continue as guest
     elif (current_user.is_anonymous):
 
-    	user = User.query.filter_by(first_name="Guest").first()    
-    
-    else:	
-    	return redirect(f'/i/{item.itemID}')
-    	
+        user = User.query.filter_by(first_name="Guest").first()    
+
+    else:    
+        return redirect(f'/i/{item.itemID}')
+        
     item = Items.query.get(itemID)
     
     
     try:
-    	# default quantity added to cart is one item
-    	cart = Cart(id = user.id, itemID = itemID, quantity= 1)
+        # default quantity added to cart is one item
+        cart = Cart(userID = user.id, itemID = itemID, quantity= 1)
     
-    	db.session.add(cart)
-    	db.session.commit()
+        db.session.add(cart)
+        db.session.commit()
     
     # Unique constraint error when user adds same item in cart
     except IntegrityError:
-    	db.session.rollback()
-    	
-    	flash("You have already added this item into your cart.")
-    	
-    return render_template('addCart.html', user=user, itemID=itemID, item=item, cart=cart)
-    	
+        db.session.rollback()
+        
+        flash("You have already added this item into your cart.")
+        
+    return redirect(url_for('view_cart'))
+    
+
+@myobj.route('/cart', methods=['GET', 'POST'])
+@login_required
+def view_cart():
+    """ Displays a users cart by showing each item individually.
+
+    Parameters
+    -------------------
+    none
+
+    Returns
+    -------------------
+    string
+        HTML code for webpage to display
+    """
+    cartItems = Cart.query.filter(Cart.userID == current_user.id)
+    items = []
+    subtotal = 0
+    for cartItem in cartItems:
+        item = Items.query.get(cartItem.itemID)
+        items.append(item)
+        subtotal += item.price * cartItem.quantity
+    return render_template('view_cart.html', currentUser=current_user, cartItems=cartItems, items=items, subtotal=subtotal)

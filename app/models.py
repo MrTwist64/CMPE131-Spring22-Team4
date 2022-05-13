@@ -58,19 +58,17 @@ class Items(db.Model):
         return '<Items {} {} {} ${}>'.format(self.product_name, self.condition, self.price, self.quantity)
 
 class Cart(db.Model):
-    cartID = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'))
+    cartID = db.Column(db.Integer, primary_key=True)
+    userID = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'))
     itemID = db.Column(db.Integer, db.ForeignKey('items.itemID', ondelete='CASCADE'))
     quantity = db.Column(db.Integer, nullable= False)
     createdAt = db.Column(db.DateTime, default=func.now())
     modifiedAt = db.Column(db.DateTime, onupdate=func.now())
     
-    __table_args__ = (
-    db.UniqueConstraint(id, itemID),
-)
+    __table_args__ = (db.UniqueConstraint(userID, itemID),)
     
     CheckConstraint('quantity > 0', name='quantity_not_negative_check')
     CheckConstraint('quantity > 0', name='modifiedAt_not_earlier_check')
     def __repr__(self):
-        return '<Cart {} {} {} {}>'.format(self.cartID, self.id, self.itemID, self.quantity)
+        return '<Cart {} {} {} {}>'.format(self.cartID, self.userID, self.itemID, self.quantity)
 

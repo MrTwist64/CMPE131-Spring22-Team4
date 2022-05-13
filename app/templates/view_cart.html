@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Cart
+{% endblock %}
+
+{% block content %}
+<h1>{{current_user.username}}'s Cart</h1>
+{% for i in range(items|length) %}
+<div>
+<table>
+    <thead>
+        <tr>
+            <th colspan="2"><a href="/i/{{items[i].itemID}}">{{items[i].condition}} | {{items[i].product_name}}</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Picture</td>
+            <td>
+                Quantity: {{cartItems[i].quantity}} <br/>
+            </td>
+            <td>
+                <p>${{items[i].price * cartItems[i].quantity}}</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<br/>
+{% endfor %}
+<h3>Subtotal</h3>
+<p>${{subtotal}}</p>
+{% endblock %}
