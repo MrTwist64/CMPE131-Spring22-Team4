@@ -288,16 +288,16 @@ def view_item(itemID):
     string
         HTML code for webpage to display
     """
-    form = DeleteItemForm()
+    delete_form = DeleteItemForm()
     item = Items.query.get(itemID)
-    if (form.validate_on_submit()):
+    if (delete_form.validate_on_submit()):
         db.session.delete(item)
         db.session.commit()
         return redirect(url_for("index"))
     category = Category.query.get(item.categoryID).category_name
     seller = User.query.get(item.sellerID)
     return render_template('item.html', item=item, category=category, seller=seller, current_user=current_user,
-                           form=form)
+                           delete_form=delete_form)
 
 
 @myobj.route('/create_item', methods=['GET', 'POST'])
@@ -399,3 +399,34 @@ def view_cart():
         items.append(item)
         subtotal += item.price * cartItem.quantity
     return render_template('view_cart.html', currentUser=current_user, cartItems=cartItems, items=items, subtotal=subtotal)
+
+
+@myobj.route('/i/<int:itemID>/update', methods=['GET', 'POST'])
+def update_item(itemID):
+    """ Allows a seller to edit their own item.
+
+    Parameters
+    -------------------
+    itemID: int
+        The id for the item to update
+
+    Returns
+    -------------------
+    string
+        HTML code for webpage to display
+    """
+    item = Items.query.get(itemID)
+    if (current_user.id != item.sellerID):
+        return redirect('/i/itemID')
+    form = CreateItemForm()
+    if (form.validate_on_submit()):
+        item.product_name = form.product_name.data
+        item.description = form.description.data
+        item.price = form.price.data
+        item.quantity = form.quantity.data
+        item.condition = form.condition.data
+        item.categoryID = form.category.data
+        db.session.add(item)
+        db.session.commit()
+        return redirect(f'/i/{item.itemID}')
+    return render_template('update_item.html', item=item, form=form)
