@@ -21,7 +21,7 @@
 17. :x: (HP) Add Pictures To Items - TBD
 
 ### Medium Priority
-17. :heavy_check_mark: (HP) Add Item Categories
+17. :heavy_check_mark: (HP) Add Item Categories - Anh & Aaron
 18. :x: Purchase History Database
 19. :x: View Purchase History
 20. :x: Picture Database
