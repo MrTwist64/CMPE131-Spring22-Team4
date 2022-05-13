@@ -173,9 +173,8 @@ db.session.commit()
 
 # create test Cart items
 testCart = Cart(cartID = 0, userID = 1, itemID = 0, quantity = 1, createdAt=None, modifiedAt=None)
-testCart2 = Cart(cartID = 2, userID= 2, itemID = 0, quantity = 1, createdAt=None, modifiedAt=None)
-
-testCart3 = Cart(cartID=3, userID=2, itemID=0, quantity=1, createdAt=None, modifiedAt=None)
+testCart2 = Cart(cartID = 1, userID= 2, itemID = 0, quantity = 1, createdAt=None, modifiedAt=None)
+testCart3 = Cart(cartID=2, userID=2, itemID=1, quantity=1, createdAt=None, modifiedAt=None)
 
 db.session.add(testCart)
 db.session.add(testCart2)
