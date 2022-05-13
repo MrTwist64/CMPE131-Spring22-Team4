@@ -17,14 +17,13 @@
 13. :heavy_check_mark: View Current Cart - Aaron
 14. :x: Remove Item From Cart - Anh
 15. :x: Buy Items From Cart - Anh
-16. :x: Maintain UI Consistency - Nhan
-17. :x: (HP) Add Pictures To Items - TBD
+16. :x: Maintain UI Consistency - Nhan - TBD
 
 ### Medium Priority
 17. :heavy_check_mark: (HP) Add Item Categories - Anh & Aaron
-18. :x: Purchase History Database
-19. :x: View Purchase History
-20. :x: Picture Database
+18. :x: (HP) Add Pictures To Items
+19. :x: Purchase History Database
+20. :x: View Purchase History
 
 ### Low Priority
 - Add Discount Codes
