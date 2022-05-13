@@ -374,7 +374,7 @@ def addToCart(itemID):
         
         flash("You have already added this item into your cart.")
         
-    return render_template('addCart.html', user=user, itemID=itemID, item=item, cart=cart)
+    return redirect(url_for('view_cart'))
     
 
 @myobj.route('/cart', methods=['GET', 'POST'])
