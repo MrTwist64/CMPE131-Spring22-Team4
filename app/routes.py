@@ -11,6 +11,7 @@ from wtforms.validators import DataRequired, Email, EqualTo
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy import and_
 
+
 login_manager = LoginManager()
 login_manager.init_app(myobj)
 
@@ -369,11 +370,16 @@ def addToCart(itemID):
         db.session.commit()
     
     # Unique constraint error when user adds same item in cart
+    # Updates existing cart item by adding quantity by one
     except IntegrityError:
         db.session.rollback()
         
         flash("You have already added this item into your cart.")
         
+        cartQuery = Cart.query.filter((Cart.userID == user.id) & (Cart.itemID == itemID)).first()
+        
+        cartQuery.quantity = cartQuery.quantity + 1
+        db.session.commit()
     return redirect(url_for('view_cart'))
     
 
@@ -430,3 +436,24 @@ def update_item(itemID):
         db.session.commit()
         return redirect(f'/i/{item.itemID}')
     return render_template('update_item.html', item=item, form=form)
+
+@myobj.route('/cart/<int:cartID>/remove', methods=['GET', 'POST'])
+def removeItemFromCart(cartID):
+    """ Allows users to remove an item from their cart
+
+    Parameters
+    -------------------
+    itemID: int
+        The id for the cart row for the item needed to removed from the cart
+
+    Returns
+    -------------------
+    string
+        HTML code for webpage to display
+    """
+    cartToDelete = Cart.query.get(cartID)
+    db.session.delete(cartToDelete)
+    db.session.commit()
+    
+    return redirect(url_for('view_cart'))
+
