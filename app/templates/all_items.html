@@ -5,7 +5,9 @@ Available Items
 {% endblock %}
 
 {% block content %}
-<div class = "justify-content-center parallax">
+<div class = "row justify-content-center parallax">
+
+<div class="col-auto panel" >
 {% if selected_category %}
 <h1 class="display-4 text-primary">Items - {{categories[selected_category].category_name}}</h1>
 {% else %}

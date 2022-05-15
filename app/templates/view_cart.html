@@ -5,33 +5,38 @@ Cart
 {% endblock %}
 
 {% block content %}
+<div class="row justify-content-center parallax">
+
+<div class="col-auto panel" >
 <h1>{{current_user.username}}'s Cart</h1>
 {% for i in range(items|length) %}
-<div>
-<table>
+<table  class="table table-bordered  table-striped table-active" >
     <thead>
         <tr>
             <th colspan="2"><a href="/i/{{items[i].itemID}}">{{items[i].condition}} | {{items[i].product_name}}</a></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody >
         <tr>
             <form action="/cart/{{cartItems[i].cartID}}/remove" method="post">
                             <input type="submit" value="Remove From Cart" class="btn btn-primary"/>
-                        </form>
-            <td>Picture</td>
-            <td>
+            </form>
+
+            <td> <img style="width:50%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/SNice.svg/1200px-SNice.svg.png" class="card-img-top" alt="Placeholder image"></td>
+            <td style="width: 50%">
                 Quantity: {{cartItems[i].quantity}} <br/>
             </td>
-            <td>
+            <td style="width: 25%">
                 <p>${{items[i].price * cartItems[i].quantity}}</p>
             </td>
         </tr>
     </tbody>
 </table>
-</div>
+
 <br/>
 {% endfor %}
 <h3>Subtotal</h3>
-<p>${{subtotal}}</p>
+<p class="display-4 strokeme">${{subtotal}}</p>
+    </div>
+</div>
 {% endblock %}
