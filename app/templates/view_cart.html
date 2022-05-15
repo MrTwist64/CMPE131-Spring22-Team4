@@ -16,6 +16,9 @@ Cart
     </thead>
     <tbody>
         <tr>
+            <form action="/cart/{{cartItems[i].cartID}}/remove" method="post">
+                            <input type="submit" value="Remove From Cart" class="btn btn-primary"/>
+                        </form>
             <td>Picture</td>
             <td>
                 Quantity: {{cartItems[i].quantity}} <br/>

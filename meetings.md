@@ -74,3 +74,15 @@
 - Minutes:
   1. Discussed cart implementation
   2. Programmed individually on cart functional requirements.
+
+### 2022-05-13 at 1:00pm till 1:30pm
+- Attended: Aaron, Anh, Nhan
+- Meeting Location: Discord
+- Scheduled: Yes
+- Minutes:
+  1. Discussed where we are currently in the project.
+  2. Discussed remaining tasks:
+      - Adding functional requirements.
+      - Updating docs website.
+      - Cleaning up code for submission.
+      - Adding test cases.

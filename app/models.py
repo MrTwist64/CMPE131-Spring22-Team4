@@ -65,6 +65,7 @@ class Cart(db.Model):
     createdAt = db.Column(db.DateTime, default=func.now())
     modifiedAt = db.Column(db.DateTime, onupdate=func.now())
     
+    # Prevents two entries from having the same user and item combination
     __table_args__ = (db.UniqueConstraint(userID, itemID),)
     
     CheckConstraint('quantity > 0', name='quantity_not_negative_check')

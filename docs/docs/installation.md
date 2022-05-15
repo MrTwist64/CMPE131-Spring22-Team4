@@ -14,5 +14,6 @@ The website should now work when the run.py file is executed using any python in
 pip install flask
 pip install flask-wtf flask-sqlalchemy flask-login
 pip install email_validator
+pip install flask-bootstrap
 ```
 
