@@ -12,7 +12,7 @@ The website should now work when the run.py file is executed using any python in
 ## Required Libraries
 ```angular2html
 pip install flask
-pip install flask-wtf flask-sqlalchemy flask-login
+pip install flask-wtf flask-sqlalchemy flask-login flask-session
 pip install email_validator
 pip install flask-bootstrap
 ```
