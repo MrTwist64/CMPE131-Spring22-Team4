@@ -1,6 +1,6 @@
 from app import myobj, db
 from app.forms import DeleteItemForm, RegistrationForm, LoginForm, ViewCategoryForm, forgotPassForm, changePassForm, \
-    updateForm, CreateItemForm
+    updateForm, CreateItemForm, CreateCheckoutForm
 from app.models import User, Category, Items, Cart
 from flask import flash, redirect, render_template, url_for, request, session
 from flask_login import UserMixin, logout_user, LoginManager, login_user, current_user, login_required
@@ -370,7 +370,7 @@ def addToCart(itemID):
         db.session.commit()
     
     # Unique constraint error when user adds same item in cart
-    # Updates existing cart item by adding quantity by one
+    # Updates existing cart item by adding quantity by one when 'add to cart' is pressed again
     except IntegrityError:
         db.session.rollback()
         
@@ -456,4 +456,31 @@ def removeItemFromCart(cartID):
     db.session.commit()
     
     return redirect(url_for('view_cart'))
+
+@myobj.route('/checkout', methods=['GET', 'POST'])
+def checkoutCart():
+    """ Allows users to checkout their cart
+
+    Parameters
+    -------------------
+    none
+
+    Returns
+    -------------------
+    string
+        HTML code for webpage to display
+    """
+
+    form = CreateCheckoutForm()
+    
+    # view summary of cart items (subtotal)
+
+    # shipping info
+    address = form.address.data
+
+    # credit card info
+    creditCardNum = form.payment.data
+    cvv = form.cvv.data
+    
+    return render_template('checkout.html', form=form)
 

@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField, SelectField, DecimalField, IntegerField
-from wtforms.validators import DataRequired, Email, EqualTo
+from wtforms.validators import DataRequired, Email, EqualTo, Length
 
 
 class RegistrationForm(FlaskForm):
@@ -107,3 +107,10 @@ class ViewCategoryForm(FlaskForm):
                                     ('17', 'Misc & Others')],
                            validators=[DataRequired()])
     submit = SubmitField('Display Items in Category')
+
+class CreateCheckoutForm(FlaskForm):
+    address = StringField('Address', validators=[DataRequired()])
+    address = StringField('Address', validators=[DataRequired(), Length(min=16,max=19)])
+    payment = StringField('Credit or Debit Card Number', validators=[DataRequired(), ])
+    cvv = StringField('CVV', validators=[DataRequired(), Length(max=3)])
+    submit = SubmitField('Checkout From Cart')
