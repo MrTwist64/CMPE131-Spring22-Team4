@@ -16,7 +16,7 @@
 12. :heavy_check_mark: Add Item to Cart - Anh
 13. :heavy_check_mark: View Current Cart - Aaron
 14. :heavy_check_mark: Remove Item From Cart - Anh
-15. :x: Buy Items From Cart - Anh
+15. :heavy_check_mark: Buy Items From Cart - Anh
 
 ### Medium Priority
 16. :heavy_check_mark: (HP) Add Item Categories - Anh & Aaron
