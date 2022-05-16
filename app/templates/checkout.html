@@ -6,20 +6,20 @@ Checkout
 
 {% block content %}
 <div class="form-group row justify-content-center parallax">
-<form action="CreateCheckoutForm" method="POST">
+<form action="" method="POST">
     <h1 class="display-4 text-primary"> Checkout </h1>
     {{form.hidden_tag()}}
-    Address
+    {{ form.address.label }}
     <p> 
         <label class="control-label">  {{ form.address(class="rounded form-control",placeholder="123 Sesame Street")}}</label>
     </p>
     <!-- TODO: flash on hover that these info are not saved in database -->
-    Credit Card Information
+    {{ form.payment.label }}
     <p>
         <label class="control-label">  {{ form.payment(class="rounded form-control",placeholder="1234 5678 9012 3456")}}</label>
     </p>
     
-    CVV
+    {{ form.cvv.label }}
     <p>
         <label class="control-label">  {{ form.cvv(class="rounded form-control",placeholder="131")}}</label>
     </p>

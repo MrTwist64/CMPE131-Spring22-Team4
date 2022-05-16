@@ -465,15 +465,17 @@ def checkoutCart():
     """
 
     form = CreateCheckoutForm()
-    
+    if (form.validate_on_submit()):
+        cartItems = Cart.query.filter(Cart.userID == current_user.id)
+        for item in cartItems:
+            db.session.delete(item)
+        db.session.commit()
+        return redirect(url_for('view_cart'))
     # view summary of cart items (subtotal)
-
     # shipping info
     address = form.address.data
-
     # credit card info
     creditCardNum = form.payment.data
     cvv = form.cvv.data
-    
     return render_template('checkout.html', form=form)
 

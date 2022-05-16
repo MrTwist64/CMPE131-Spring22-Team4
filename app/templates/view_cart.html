@@ -37,6 +37,11 @@ Cart
 {% endfor %}
 <h3>Subtotal</h3>
 <p class="display-4 strokeme">${{subtotal}}</p>
-    </div>
+<form action="/checkout" method="post">
+    <input type="submit" value="Checkout" class="btn btn-primary"/>
+</form>
+
+</div>
+
 </div>
 {% endblock %}
