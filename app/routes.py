@@ -350,35 +350,28 @@ def addToCart(itemID):
     # the user is already logged into their account
     if (current_user.is_authenticated):
         user = current_user
-    
     # the user is not logged in, and will continue as guest
     elif (current_user.is_anonymous):
-
-        user = User.query.filter_by(first_name="Guest").first()    
-
+        user = User.query.filter_by(first_name="Guest").first()   
     else:    
         return redirect(f'/i/{item.itemID}')
         
     item = Items.query.get(itemID)
     
-    
     try:
         # default quantity added to cart is one item
         cart = Cart(userID = user.id, itemID = itemID, quantity= 1)
-    
         db.session.add(cart)
         db.session.commit()
-    
     # Unique constraint error when user adds same item in cart
     # Updates existing cart item by adding quantity by one when 'add to cart' is pressed again
     except IntegrityError:
         db.session.rollback()
-        
         flash("You have already added this item into your cart.")
-        
         cartQuery = Cart.query.filter((Cart.userID == user.id) & (Cart.itemID == itemID)).first()
-        
-        cartQuery.quantity = cartQuery.quantity + 1
+        # Prevents adding more items to cart than are available to buy
+        if (cartQuery.quantity < item.quantity):
+            cartQuery.quantity = cartQuery.quantity + 1
         db.session.commit()
     return redirect(url_for('view_cart'))
     
