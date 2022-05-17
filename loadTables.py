@@ -85,59 +85,59 @@ db.session.commit()
 
 # inserting rows for Items table
 itemsTest = Items(itemID=0, product_name='Ketchup', condition= 'New', description='Made from quality tomatoes', 
-                  price=5, quantity=4, sellerID=0, categoryID=0)
+                  price=4, quantity=20, sellerID=0, categoryID=0)
 
 itemsTest2 = Items(itemID=1, product_name='The Alchemist', condition= 'Used - Good', description='A best seller from Paulo Coelho', 
-                  price=12, quantity=4, sellerID=0, categoryID=1)
+                  price=12, quantity=17, sellerID=0, categoryID=1)
 itemsTest3 = Items(itemID=2, product_name='Fruits Basket DVD Collection', condition='Used - Good', description='Adapted into DVD the anime Fruits Basket', 
-                  price=16, quantity=4, sellerID=0, categoryID=2)
+                  price=47, quantity=4, sellerID=0, categoryID=2)
 itemsTest4 = Items(itemID=3, product_name='Study Desk', condition= 'New', description='Students tears go brrrrr', 
-                  price=35, quantity=4, sellerID=0, categoryID=3)
+                  price=35, quantity=16, sellerID=0, categoryID=3)
 itemsTest5 = Items(itemID=4, product_name='Maxi Dress', condition= 'New', description='Cool Dress. Near floor length', 
                   price=59, quantity=4, sellerID=0, categoryID=4)
 itemsTest6 = Items(itemID=5, product_name='Suit Jacket', condition= 'New', description='It suits you nicely.', 
-                  price=60, quantity=4, sellerID=0, categoryID=5)
+                  price=60, quantity=7, sellerID=2, categoryID=5)
 itemsTest7 = Items(itemID=6, product_name='Nintendo Switch Lite', condition= 'Used - Like New', description='Tested. Nitendo Switch Lite handheld console', 
-                  price=200, quantity=4, sellerID=0, categoryID=6)
+                  price=180, quantity=26, sellerID=0, categoryID=6)
 itemsTest8 = Items(itemID=7, product_name='Baby Onesies', condition= 'New', description='Made from high quality soft cottons. For 2 year olds to 3 year olds', 
-                  price=29, quantity=4, sellerID=0, categoryID=7)
+                  price=10, quantity=38, sellerID=0, categoryID=7)
 itemsTest9 = Items(itemID=8, product_name='Pokemon Cards', condition= 'New', description='Pokemon Trading Cards - Starter Pack', 
-                  price=6, quantity=4, sellerID=0, categoryID=8)
+                  price=6, quantity=36, sellerID=0, categoryID=8)
 itemsTest10 = Items(itemID=9, product_name='Colourpop - Eyeliner', condition= 'New', description='Line those eyelids with our best eyeliner formula', 
-                  price=14, quantity=4, sellerID=0, categoryID=9)
+                  price=14, quantity=50, sellerID=0, categoryID=9)
 itemsTest11 = Items(itemID=10, product_name='Garden Gnome - Gnomeo', condition= 'Used - Good', description='Inspired by the animated movie, Juliet and Gnomeo', 
                   price=32, quantity=4, sellerID=0, categoryID=10)
 itemsTest12 = Items(itemID=11, product_name='Uggs Boots', condition= 'Used - Acceptable', description='Warmth for your feet', 
-                  price=87, quantity=4, sellerID=0, categoryID=11)
+                  price=87, quantity=16, sellerID=0, categoryID=11)
 itemsTest13 = Items(itemID=12, product_name='Cabinents', condition= 'Used - Good', description='6 feet cabient tower. It has 5 drawers for your stuff', 
                   price=64, quantity=4, sellerID=0, categoryID=12)
 itemsTest14 = Items(itemID=13, product_name='Hand Mixer', condition= 'New', description='Mix that batter!', 
-                  price=25, quantity=4, sellerID=0, categoryID=13)
+                  price=30, quantity=5, sellerID=0, categoryID=13)
 itemsTest15 = Items(itemID=14, product_name='College Ruled - Filler Paper', condition= 'New', description='To fill your binders with paper', 
-                  price=2, quantity=4, sellerID=0, categoryID=14)
+                  price=2, quantity=39, sellerID=0, categoryID=14)
 itemsTest16 = Items(itemID=15, product_name='Advil', condition= 'New', description='Advil for pain management and fever supression', 
-                  price=35, quantity=4, sellerID=0, categoryID=15)
+                  price=35, quantity=21, sellerID=0, categoryID=15)
 itemsTest17 = Items(itemID=16, product_name='Roomba', condition= 'Used - Good', description='A roomba to automatically clean your floors', 
                   price=100, quantity=4, sellerID=0, categoryID=16)
 itemsTest18 = Items(itemID=17, product_name='Pride Pins', condition= 'New', description='Handmade pins to celebrate pride and our identities', 
-                  price=5, quantity=4, sellerID=0, categoryID=16)
+                  price=5, quantity=27, sellerID=0, categoryID=16)
 
 itemsTest19 = Items(itemID=18, product_name='NCT Resonance Album', condition= 'New', description='NCT 2020 K-pop album', 
-                  price=30, quantity=4, sellerID=0, categoryID=2)
+                  price=30, quantity=6, sellerID=1, categoryID=2)
 itemsTest20 = Items(itemID=19, product_name='Splatoon 2', condition= 'Used - Like New', description='Nintendo Switch - Splatoon game - Third person shooter action', 
-                  price=60, quantity=4, sellerID=0, categoryID=2)
+                  price=60, quantity=17, sellerID=3, categoryID=2)
 itemsTest21 = Items(itemID=20, product_name='Splatoon 3', condition= 'New', description='Splatlands!! Woohoo another Splatoon game.', 
-                  price=60, quantity=4, sellerID=0, categoryID=2)
+                  price=60, quantity=30, sellerID=3, categoryID=2)
 itemsTest22 = Items(itemID=21, product_name='Apple Sauce', condition= 'New', description='Made from quality apples', 
-                  price=3, quantity=4, sellerID=4, categoryID=0)
+                  price=3, quantity=25, sellerID=4, categoryID=0)
 itemsTest23 = Items(itemID=22, product_name='Salmon Filet', condition= 'New', description='A salmon cut packaged with ice', 
-                  price=15, quantity=4, sellerID=8, categoryID=0)
+                  price=15, quantity=7, sellerID=8, categoryID=0)
 itemsTest24 = Items(itemID=23, product_name='Roses', condition= 'New', description='Florist quality rose bouquet', 
-                  price=12, quantity=4, sellerID=1, categoryID=10)
+                  price=12, quantity=14, sellerID=1, categoryID=10)
 itemsTest25 = Items(itemID=24, product_name='Turning Red - DVD', condition= 'Used - Acceptable', description="Disney and Pixar's hit movie of 2022 - Turning Red", 
-                  price=20, quantity=4, sellerID=8, categoryID=2)
+                  price=20, quantity=9, sellerID=8, categoryID=2)
 itemsTest26 = Items(itemID=25, product_name='Shampoo', condition= 'New', description='Dove Shampoo', 
-                  price=12, quantity=4, sellerID=5, categoryID=9)
+                  price=12, quantity=18, sellerID=5, categoryID=9)
 itemsTest27 = Items(itemID=26, product_name='Cargo Pants', condition= 'Used - Good', description='A midlength cargo pants for men - size XL', 
                   price=20, quantity=4, sellerID=3, categoryID=5)
 

@@ -114,7 +114,7 @@ Any user regardless of logged in status or not can also click on an item to view
 If the user is the one who is selling the item, the user can click on the particular item they wish to delete a listing of and clicks on "Delete Item" button to delete the item from store.
 
 ## routes.addToCart(itemID)
-Allows logged in user or a guest user to add an item to a cart. It does not allow for the a user to add the same item to their cart multiple times.
+Allows logged in user to add an item to a cart. If a user clicks the same item to add into their cart, the item quantity in the user's cart updates by one. 
 
 #### Parameters:
 - itemID (int): id for the item to add to the cart.
@@ -139,3 +139,12 @@ Allows a seller to edit their own item. Reuses the create item form, which allow
 
 #### Returns
 - string: HTML code for webpage to display that allows seller to update item.
+
+## routes.checkoutCart()
+Allows users to buy and checkout items from their cart. 
+
+#### Parameters:
+- none
+
+#### Returns
+- string: HTML code for webpage to display the checkout page.
