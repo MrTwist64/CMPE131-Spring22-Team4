@@ -122,7 +122,7 @@ def forgot_pass():
             return redirect(url_for('changePass'))
         else:
             flash('Invalid email address')
-        return redirect(url_for('forgotPass'))
+        return redirect(url_for('forgot_pass'))
     return render_template('forgot_pass.html', form=form)
 
 
