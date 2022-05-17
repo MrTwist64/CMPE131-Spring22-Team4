@@ -111,5 +111,5 @@ class ViewCategoryForm(FlaskForm):
 class CreateCheckoutForm(FlaskForm):
     address = StringField('Address', validators=[DataRequired()])
     payment = StringField('Credit or Debit Card Number', validators=[DataRequired()])
-    cvv = StringField('CVV', validators=[DataRequired(), Length(max=3, message='Length must be %(min)d and %(max)d number characters')])
+    cvv = StringField('CVV', validators=[DataRequired(), Length(max=3, message='Length must be %(max)d number characters')])
     submit = SubmitField('Checkout From Cart')
