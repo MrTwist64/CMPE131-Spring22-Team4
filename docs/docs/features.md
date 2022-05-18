@@ -140,6 +140,15 @@ Allows a seller to edit their own item. Reuses the create item form, which allow
 #### Returns
 - string: HTML code for webpage to display that allows seller to update item.
 
+## routes.removeItemFromCart()
+Allows users to remove an item from their cart.
+
+#### Parameters:
+- cartID (int): id for the cart row for the item needed to removed from the cart.
+
+#### Returns
+- string: HTML code for webpage to display the checkout page.
+
 ## routes.checkoutCart()
 Allows users to buy and checkout items from their cart. 
 
